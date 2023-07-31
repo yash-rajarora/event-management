@@ -1,4 +1,5 @@
 import 'package:event/forgot.dart';
+import 'package:event/home.dart';
 import 'package:event/login.dart';
 import 'package:event/register.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ void main() {
     routes: {
       'login' : (context) => MyLogin(),
       'register' : (context) => MyRegister(),
-      'forgot':(context) => MyForgot()
+      'forgot':(context) => MyForgot(),
+      'home':(context) => Home()
     },
   ));
 }

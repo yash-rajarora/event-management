@@ -107,7 +107,9 @@ class _MyLoginState extends State<MyLogin> {
                               color: Colors.orange[900]
                           ),
                           child: Center(
-                            child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                            child: TextButton(onPressed: (){
+                              Navigator.pushNamed(context, 'home');
+                            },child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),),
                           ),
                         ),
                         SizedBox(height: 50,),

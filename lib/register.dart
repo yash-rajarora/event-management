@@ -117,7 +117,12 @@ class _MyRegisterState extends State<MyRegister> {
                               color: Colors.orange[900]
                           ),
                           child: Center(
-                            child: Text("Signup", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+
+                            child: Center(
+                              child: TextButton(onPressed: (){
+                                Navigator.pushNamed(context, 'home');
+                              },child: Text("Signup", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),),
+                            ),
                           ),
                         ),
                         SizedBox(height: 50,),
