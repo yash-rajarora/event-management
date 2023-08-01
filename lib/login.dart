@@ -20,9 +20,9 @@ class _MyLoginState extends State<MyLogin> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color(0xFFE65100),
-              Color(0xFFEF6C00),
-              Color(0xFFF57C00),
+              Color.fromRGBO(66, 220, 175,1),
+              Color.fromRGBO(38, 220, 147,1),
+              Color.fromRGBO(39, 219, 111,1),
             ]
           )
         ),
@@ -35,11 +35,11 @@ class _MyLoginState extends State<MyLogin> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("LOGIN", style: TextStyle(color: Colors.white, fontSize: 50,fontWeight: FontWeight.w900,),),
+                    Text("LOGIN", style: TextStyle(color: Colors.black54, fontSize: 50,fontWeight: FontWeight.w900,),),
                     SizedBox(height: 10,),
                     Padding(
                       padding: EdgeInsets.only(left: 12),
-                        child: Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 18),),
+                        child: Text("Welcome Back", style: TextStyle(color: Colors.black54, fontSize: 18),),
                     ),
                   ],
                 ),
@@ -67,8 +67,8 @@ class _MyLoginState extends State<MyLogin> {
                                     color: Colors.white,
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
                                     boxShadow: [BoxShadow(
-                                color: Color.fromRGBO(97, 97, 97,0.1),
-                                  blurRadius: 5,
+                                color: Color.fromRGBO(66, 220, 175,0.2),
+                                  blurRadius: 10,
                                   offset: Offset(0, 5)
                               )],
                                 ),
@@ -89,8 +89,8 @@ class _MyLoginState extends State<MyLogin> {
                                     color: Colors.white,
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
                                     boxShadow: [BoxShadow(
-                                        color: Color.fromRGBO(97, 97, 97,0.1),
-                                        blurRadius: 5,
+                                        color: Color.fromRGBO(66, 220, 175,0.2),
+                                        blurRadius: 10,
                                         offset: Offset(0, 5)
                                     )]
                                 ),
@@ -114,14 +114,13 @@ class _MyLoginState extends State<MyLogin> {
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Colors.orange[900]
+                              color: Color.fromRGBO(66, 220, 175,1)
                           ),
 
                           child: TextButton(onPressed: (){
                             FirebaseAuth.instance.signInWithEmailAndPassword(email: _EmailController.text, password: _PasswordController.text).then((value) {
-                              Navigator.pushNamed(context, 'home').onError((error, stackTrace) {
-                                print('error ${error.toString()}');
-                              });
+                              Navigator.pushNamed(context, 'home');}).onError((error, stackTrace) {
+                              Fluttertoast.showToast(msg: "Invalid Email or Password");
                             });
                           },child: Text("GET STARTED", style: TextStyle(color: Colors.white, fontSize: 18),),),
 

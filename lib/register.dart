@@ -19,28 +19,31 @@ class _MyRegisterState extends State<MyRegister> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 colors: [
-                  Color(0xFFE65100),
-                  Color(0xFFEF6C00),
-                  Color(0xFFF57C00),
+                  Color.fromRGBO(66, 220, 175,1),
+                  Color.fromRGBO(38, 220, 147,1),
+                  Color.fromRGBO(39, 219, 111,1),
                 ]
             )
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 80,),
-            Padding(
-              padding: EdgeInsets.all(20),
+            SizedBox(height: 100,),
+            Center(
+
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("SignUp", style: TextStyle(color: Colors.white, fontSize: 40),),
+                  Text("SignUp", style: TextStyle(color: Colors.black54, fontSize: 50,fontWeight: FontWeight.w900),),
                   SizedBox(height: 10,),
-                  Text("Welcome", style: TextStyle(color: Colors.white, fontSize: 18),),
+                  Padding(
+                    padding: EdgeInsets.only(left: 50),
+                      child:Text("Welcome", style: TextStyle(color: Colors.black54, fontSize: 18),),
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -52,23 +55,20 @@ class _MyRegisterState extends State<MyRegister> {
                     padding: EdgeInsets.all(30),
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 60,),
+                        SizedBox(height: 40,),
                         Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 10)
-                              )]
-                          ),
                           child: Column(
-                            children: <Widget>[
+                            children:[
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
+                                  color: Colors.white,
+                                  border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+                                  boxShadow: [BoxShadow(
+                                      color: Color.fromRGBO(66, 220, 175,0.2),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 5)
+                                  )],
                                 ),
                                 child: TextField(
                                   controller: _EmailController,
@@ -79,10 +79,18 @@ class _MyRegisterState extends State<MyRegister> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 20,),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
+
+                                    color: Colors.white,
+                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+                                    boxShadow: [BoxShadow(
+                                        color: Color.fromRGBO(66, 220, 175,0.2),
+                                        blurRadius: 10,
+                                        offset: Offset(0, 5)
+                                    )]
                                 ),
                                 child: TextField(
                                   obscureText: true,
@@ -94,13 +102,22 @@ class _MyRegisterState extends State<MyRegister> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 20,),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
+
+                                    color: Colors.white,
+                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+                                    boxShadow: [BoxShadow(
+                                        color: Color.fromRGBO(66, 220, 175,0.2),
+                                        blurRadius: 10,
+                                        offset: Offset(0, 5)
+                                    )]
                                 ),
                                 child: TextField(
                                   obscureText: true,
+                                  controller: _PasswordController,
                                   decoration: InputDecoration(
                                       hintText: "Confirm Password",
                                       hintStyle: TextStyle(color: Colors.grey),
@@ -112,16 +129,12 @@ class _MyRegisterState extends State<MyRegister> {
                           ),
                         ),
                         SizedBox(height: 40,),
-                        TextButton(onPressed: (){
-                          Navigator.pushNamed(context, 'login');
-                        }, child: Text('SignIn',style: TextStyle(color: Colors.grey))),
-                        SizedBox(height: 40,),
                         Container(
                           height: 50,
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Colors.orange[900]
+                              color: Color.fromRGBO(66, 220, 175,1)
                           ),
                           child: Center(
 
@@ -141,6 +154,12 @@ class _MyRegisterState extends State<MyRegister> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 40,),
+                        TextButton(onPressed: (){
+                          Navigator.pushNamed(context, 'login');
+                        }, child: Text('Already have an account??',style: TextStyle(color: Colors.grey))),
+
+
                         SizedBox(height: 50,),
                       ],
                     ),
