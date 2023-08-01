@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyRegister extends StatefulWidget {
@@ -8,6 +9,8 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final _EmailController = TextEditingController();
+  final _PasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +71,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
                                 ),
                                 child: TextField(
+                                  controller: _EmailController,
                                   decoration: InputDecoration(
                                       hintText: "Email or Phone number",
                                       hintStyle: TextStyle(color: Colors.grey),
@@ -81,6 +85,8 @@ class _MyRegisterState extends State<MyRegister> {
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
                                 ),
                                 child: TextField(
+                                  obscureText: true,
+                                  controller: _PasswordController,
                                   decoration: InputDecoration(
                                       hintText: "Password",
                                       hintStyle: TextStyle(color: Colors.grey),
@@ -94,6 +100,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
                                 ),
                                 child: TextField(
+                                  obscureText: true,
                                   decoration: InputDecoration(
                                       hintText: "Confirm Password",
                                       hintStyle: TextStyle(color: Colors.grey),
@@ -106,7 +113,7 @@ class _MyRegisterState extends State<MyRegister> {
                         ),
                         SizedBox(height: 40,),
                         TextButton(onPressed: (){
-                          Navigator.pushNamed(context, 'register');
+                          Navigator.pushNamed(context, 'login');
                         }, child: Text('SignIn',style: TextStyle(color: Colors.grey))),
                         SizedBox(height: 40,),
                         Container(
@@ -120,7 +127,16 @@ class _MyRegisterState extends State<MyRegister> {
 
                             child: Center(
                               child: TextButton(onPressed: (){
-                                Navigator.pushNamed(context, 'home');
+                                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                    email: _EmailController.text,
+                                    password: _PasswordController.text
+                                ).then((value) {
+                                  Navigator.pushNamed(context, 'home');
+                                }).onError((error, stackTrace) {
+                                  print("Error ${error.toString()}");
+                                });
+
+
                               },child: Text("Signup", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),),
                             ),
                           ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyLogin extends StatefulWidget {
@@ -8,6 +9,8 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final _EmailController = TextEditingController();
+  final _PasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +71,8 @@ class _MyLoginState extends State<MyLogin> {
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
                                 ),
                                 child: TextField(
-                                  decoration: InputDecoration(
+                                    controller: _EmailController,
+                                    decoration: InputDecoration(
                                       hintText: "Email or Phone number",
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none
@@ -81,6 +85,8 @@ class _MyLoginState extends State<MyLogin> {
                                     border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
                                 ),
                                 child: TextField(
+                                  obscureText: true,
+                                  controller: _PasswordController,
                                   decoration: InputDecoration(
                                       hintText: "Password",
                                       hintStyle: TextStyle(color: Colors.grey),
@@ -101,16 +107,19 @@ class _MyLoginState extends State<MyLogin> {
                         SizedBox(height: 40,),
                         Container(
                           height: 50,
+                          width: 200,
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
                               color: Colors.orange[900]
                           ),
-                          child: Center(
+
                             child: TextButton(onPressed: (){
-                              Navigator.pushNamed(context, 'home');
+                              FirebaseAuth.instance.signInWithEmailAndPassword(email: _EmailController.text, password: _PasswordController.text).then((value) {
+                                Navigator.pushNamed(context, 'home');
+                              });
                             },child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),),
-                          ),
+
                         ),
                         SizedBox(height: 50,),
                       ],

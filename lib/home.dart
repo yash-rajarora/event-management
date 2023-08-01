@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -37,7 +38,9 @@ class _HomeState extends State<Home> {
             ),
 
           child: TextButton(onPressed: (){
-            Navigator.pushNamed(context, 'login');
+            FirebaseAuth.instance.signOut().then((value) {
+              Navigator.pushNamed(context, 'login');
+            });
           },child: Text("Logout", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),),),
         ),
         ),
