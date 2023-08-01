@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({super.key});
@@ -28,19 +29,23 @@ class _MyLoginState extends State<MyLogin> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 80,),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text("Login", style: TextStyle(color: Colors.white, fontSize: 40),),
-                  SizedBox(height: 10,),
-                  Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 18),),
-                ],
-              ),
+            SizedBox(height: 100),
+            Center(
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("LOGIN", style: TextStyle(color: Colors.white, fontSize: 50,fontWeight: FontWeight.w900,),),
+                    SizedBox(height: 10,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 12),
+                        child: Text("Welcome Back", style: TextStyle(color: Colors.white, fontSize: 18),),
+                    ),
+                  ],
+                ),
+
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -54,21 +59,18 @@ class _MyLoginState extends State<MyLogin> {
                       children: <Widget>[
                         SizedBox(height: 60,),
                         Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 10)
-                              )]
-                          ),
                           child: Column(
-                            children: <Widget>[
+                            children:[
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
+                                    color: Colors.white,
+                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+                                    boxShadow: [BoxShadow(
+                                color: Color.fromRGBO(97, 97, 97,0.1),
+                                  blurRadius: 5,
+                                  offset: Offset(0, 5)
+                              )],
                                 ),
                                 child: TextField(
                                     controller: _EmailController,
@@ -79,10 +81,18 @@ class _MyLoginState extends State<MyLogin> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 20,),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)))
+
+                                    color: Colors.white,
+                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+                                    boxShadow: [BoxShadow(
+                                        color: Color.fromRGBO(97, 97, 97,0.1),
+                                        blurRadius: 5,
+                                        offset: Offset(0, 5)
+                                    )]
                                 ),
                                 child: TextField(
                                   obscureText: true,
@@ -98,30 +108,34 @@ class _MyLoginState extends State<MyLogin> {
                           ),
                         ),
                         SizedBox(height: 40,),
-                        TextButton(onPressed: (){
-                          Navigator.pushNamed(context, 'register');
-                        }, child: Text('SignUp',style: TextStyle(color: Colors.grey))),
-                        TextButton(onPressed: (){
-                          Navigator.pushNamed(context, 'forgot');
-                        }, child: Text('Forget Password?',style: TextStyle(color: Colors.grey))),
-                        SizedBox(height: 40,),
                         Container(
-                          height: 50,
-                          width: 200,
+                          height: 55,
+                          width: double.infinity,
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
                               color: Colors.orange[900]
                           ),
 
-                            child: TextButton(onPressed: (){
-                              FirebaseAuth.instance.signInWithEmailAndPassword(email: _EmailController.text, password: _PasswordController.text).then((value) {
-                                Navigator.pushNamed(context, 'home');
+                          child: TextButton(onPressed: (){
+                            FirebaseAuth.instance.signInWithEmailAndPassword(email: _EmailController.text, password: _PasswordController.text).then((value) {
+                              Navigator.pushNamed(context, 'home').onError((error, stackTrace) {
+                                print('error ${error.toString()}');
                               });
-                            },child: Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),),
+                            });
+                          },child: Text("GET STARTED", style: TextStyle(color: Colors.white, fontSize: 18),),),
 
                         ),
-                        SizedBox(height: 50,),
+                      SizedBox(height: 30,),
+                      TextButton(onPressed: (){
+                          Navigator.pushNamed(context, 'register');
+                        }, child: Text('SignUp',style: TextStyle(color: Colors.grey))),
+                        TextButton(onPressed: (){
+                          Navigator.pushNamed(context, 'forgot');
+                        }, child: Text('Forget Password?',style: TextStyle(color: Colors.grey))),
+                        SizedBox(height: 40,),
+
+
                       ],
                     ),
                   ),
