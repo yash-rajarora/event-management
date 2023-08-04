@@ -20,11 +20,11 @@ class _MyLoginState extends State<MyLogin> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color.fromRGBO(66, 220, 175,1),
-              Color.fromRGBO(38, 220, 147,1),
-              Color.fromRGBO(39, 219, 111,1),
+              Color.fromRGBO(159, 208, 181,1),
+              Color.fromRGBO(66, 138, 157,1),
+              Color.fromRGBO(159, 208, 181,1),
             ]
-          )
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,7 @@ class _MyLoginState extends State<MyLogin> {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.white54,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
                 ),
                 child: SingleChildScrollView(
@@ -65,19 +65,24 @@ class _MyLoginState extends State<MyLogin> {
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
-                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE))),
+                                    border: Border(bottom: BorderSide(color: Color(0xFFEEEEEE)),),
                                     boxShadow: [BoxShadow(
-                                color: Color.fromRGBO(66, 220, 175,0.2),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 5)
-                              )],
+                                    color: Color.fromRGBO(66, 220, 175,0.2),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 5)
+                                  )],
                                 ),
                                 child: TextField(
+
+
                                     controller: _EmailController,
                                     decoration: InputDecoration(
                                       hintText: "Email or Phone number",
                                       hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none
+                                      border: InputBorder.none,
+
+
+
                                   ),
                                 ),
                               ),
@@ -114,7 +119,7 @@ class _MyLoginState extends State<MyLogin> {
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Color.fromRGBO(66, 220, 175,1)
+                              color: Color.fromRGBO(66, 138, 157,1)
                           ),
 
                           child: TextButton(onPressed: (){

@@ -20,9 +20,9 @@ class _MyForgotState extends State<MyForgot> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 colors: [
-                  Color.fromRGBO(66, 220, 175,1),
-                  Color.fromRGBO(38, 220, 147,1),
-                  Color.fromRGBO(39, 219, 111,1),
+                  Color.fromRGBO(159, 208, 181,1),
+                  Color.fromRGBO(66, 138, 157,1),
+                  Color.fromRGBO(159, 208, 181,1),
                 ]
             )
         ),
@@ -89,7 +89,7 @@ class _MyForgotState extends State<MyForgot> {
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Color.fromRGBO(66, 220, 175,1)
+                              color: Color.fromRGBO(66, 138, 157,1)
                           ),
 
                           child: TextButton(onPressed: (){

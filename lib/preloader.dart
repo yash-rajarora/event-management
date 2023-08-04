@@ -26,9 +26,21 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // Load the app icon using the FlutterLogo widget (you can replace this with your app's actual icon)
     return Scaffold(
-      backgroundColor: Color(0xFFF48FB1),
-      body: Center(
-        child: Image.asset('assets/icon.png'),
+
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [
+                Color.fromRGBO(159, 208, 181,1),
+                Color.fromRGBO(66, 138, 157,1),
+                Color.fromRGBO(159, 208, 181,1),
+              ]
+          ),
+        ),
+        child:Center(
+          child: Image.asset('assets/icon.png'),
+        ),
       ),
     );
   }

@@ -19,9 +19,9 @@ class _MyRegisterState extends State<MyRegister> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 colors: [
-                  Color.fromRGBO(66, 220, 175,1),
-                  Color.fromRGBO(38, 220, 147,1),
-                  Color.fromRGBO(39, 219, 111,1),
+                  Color.fromRGBO(159, 208, 181,1),
+                  Color.fromRGBO(66, 138, 157,1),
+                  Color.fromRGBO(159, 208, 181,1),
                 ]
             )
         ),
@@ -47,7 +47,7 @@ class _MyRegisterState extends State<MyRegister> {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.white54,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
                 ),
                 child: SingleChildScrollView(
@@ -134,7 +134,7 @@ class _MyRegisterState extends State<MyRegister> {
                           margin: EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Color.fromRGBO(66, 220, 175,1)
+                              color: Color.fromRGBO(66, 138, 157,1)
                           ),
                           child: Center(
 
@@ -157,7 +157,7 @@ class _MyRegisterState extends State<MyRegister> {
                         SizedBox(height: 40,),
                         TextButton(onPressed: (){
                           Navigator.pushNamed(context, 'login');
-                        }, child: Text('Already have an account??',style: TextStyle(color: Colors.grey))),
+                        }, child: Text('Already have an account?',style: TextStyle(color: Colors.grey))),
 
 
                         SizedBox(height: 50,),
