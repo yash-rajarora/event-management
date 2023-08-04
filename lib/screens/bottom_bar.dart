@@ -1,3 +1,4 @@
+import 'package:event/profile.dart';
 import 'package:event/screens/home.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
     HomeScreen(),
     const Text("search"),
     const Text("Explore"),
-    const Text("Profile")
+    Profile()
   ];
 
   void _onItemTapped(int index){

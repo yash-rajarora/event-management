@@ -1,5 +1,4 @@
 import 'package:event/forgot.dart';
-import 'package:event/screens/home.dart';
 import 'package:event/login.dart';
 import 'package:event/preloader.dart';
 import 'package:event/register.dart';
