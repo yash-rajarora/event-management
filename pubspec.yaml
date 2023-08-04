@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.2
+  intl: ^0.17.0-nullsafety.2
+  gap: ^2.0.0
+  fluentui_icons: ^1.0.0
   # add this line to your dependencies
   fluttertoast: ^8.2.2
 

@@ -133,7 +133,7 @@ class _MyLoginState extends State<MyLogin> {
                           Navigator.pushNamed(context, 'forgot');
                         }, child: Text('Forget Password?',style: TextStyle(color: Colors.grey))),
                         SizedBox(height: 40,),
-
+                        TextButton(onPressed: (){Navigator.pushNamed(context, 'home');} ,child: Text('home',style: TextStyle(color: Colors.grey)))
 
                       ],
                     ),
