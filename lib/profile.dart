@@ -1,4 +1,14 @@
+import 'package:event/profile/tnc.dart';
+import 'package:event/screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:event/login.dart';
+import 'package:event/profile/notification.dart';
+import 'package:event/profile/Faqs.dart';
+import 'package:event/profile/tnc.dart';
+import 'package:event/profile/help.dart';
+import 'package:event/profile/privacy.dart';
+
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -19,9 +29,11 @@ class _ProfileState extends State<Profile> {
           Container(height: 35),
           userTile(),
           divider(),
-          colorTiles(),
+          colorTiles(context),
           divider(),
-          bwTiles(),
+          bwTiles(context),
+          divider(),
+          logoutTile(context)
         ],
       ),
     );
@@ -30,7 +42,7 @@ class _ProfileState extends State<Profile> {
 
 Widget userTile() {
   String url =
-      "https://example.com/image.jpg"; // Replace this with a valid image URL
+      "https://i.pinimg.com/236x/3f/11/9f/3f119fc68701915b53cf00164fef1293.jpg"; // Replace this with a valid image URL
   return ListTile(
     leading: CircleAvatar(
       backgroundImage: NetworkImage(url),
@@ -49,33 +61,68 @@ Widget divider() {
   );
 }
 
-Widget colorTiles() {
+Widget colorTiles(BuildContext context) {
   return Column(
     children: [
-      colorTile(Icons.person_outline, Colors.deepPurple, "Personal data"),
-      colorTile(Icons.settings_outlined, Colors.blue, "Settings"),
-      colorTile(Icons.wallet, Colors.pinkAccent, "Payment"),
-      colorTile(Icons.favorite_border, Colors.amber, "Refferal code"),
+      colorTile(Icons.person_outline, Colors.deepPurple, "My events", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      }),
+      colorTile(Icons.settings_outlined, Colors.blue, "Notifications", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NotificationSettings()),
+        );
+      }),
+      colorTile(Icons.wallet, Colors.pinkAccent, "Referral code", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      }),
     ],
   );
 }
 
-Widget bwTiles() {
+Widget bwTiles(BuildContext context) {
   Color color = Colors.blueGrey.shade800;
   return Column(
     children: [
-      bwTile(Icons.info_outline, "FAQs"),
-      bwTile(Icons.border_color_outlined, "Handbook"),
-      bwTile(Icons.textsms_outlined, "Community"),
+      bwTile(Icons.info_outline, "FAQs", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FAQScreen()),
+        );
+      }),
+      bwTile(Icons.border_color_outlined, "Terms & Conditions", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TncScreen()),
+        );
+      }),
+      bwTile(Icons.textsms_outlined, "Help center", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HelpCenterScreen()),
+        );
+      }),
+      bwTile(Icons.privacy_tip, "Privacy policy", () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PrivacyPolicyScreen()),
+        );
+      }),
     ],
   );
 }
 
-Widget bwTile(IconData icon, String text) {
-  return colorTile(icon, Colors.black, text);
+Widget bwTile(IconData icon, String text, VoidCallback onTap) {
+  return colorTile(icon, Colors.black, text, onTap);
 }
 
-Widget colorTile(IconData icon, Color color, String text) {
+Widget colorTile(IconData icon, Color color, String text, VoidCallback onTap) {
   Color pickedColor = Color(0xfff3f4fe);
   return ListTile(
     leading: Container(
@@ -89,5 +136,26 @@ Widget colorTile(IconData icon, Color color, String text) {
     ),
     title: Text(text),
     trailing: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20),
+    onTap: onTap,
+  );
+}
+
+Widget logoutTile(BuildContext context) {
+  return ListTile(
+    leading: Container(
+      child: Icon(Icons.logout, color: Colors.red),
+      height: 45,
+      width: 45,
+      decoration: BoxDecoration(
+        color: Colors.red.withOpacity(0.09),
+        borderRadius: BorderRadius.circular(18),
+      ),
+    ),
+    title: Text('Logout', style: TextStyle(color: Colors.red)),
+    onTap: () {
+      // Perform the logout action here
+      // For demonstration, just navigate to the LogoutScreen
+      FirebaseAuth.instance.signOut().then((value){Navigator.pushNamed(context, 'login');});
+    },
   );
 }

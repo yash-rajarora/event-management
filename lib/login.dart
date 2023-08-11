@@ -73,16 +73,11 @@ class _MyLoginState extends State<MyLogin> {
                                   )],
                                 ),
                                 child: TextField(
-
-
                                     controller: _EmailController,
                                     decoration: InputDecoration(
                                       hintText: "Email or Phone number",
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none,
-
-
-
                                   ),
                                 ),
                               ),
