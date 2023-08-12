@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -45,7 +46,7 @@ class FAQScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Frequently Asked Questions'),
-        backgroundColor: Colors.brown,
+        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 30),

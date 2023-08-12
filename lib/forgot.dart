@@ -35,7 +35,7 @@ class _MyForgotState extends State<MyForgot> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("FORGOT PASSWORD", style: TextStyle(color: Colors.black54, fontSize: 30,fontWeight: FontWeight.w900,),),
+                  Text("FORGOT \n PASSWORD", style: TextStyle(color: Colors.black54, fontSize: 30,fontWeight: FontWeight.w900,),),
 
                 ],
               ),

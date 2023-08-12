@@ -1,7 +1,6 @@
-import 'package:event/login.dart';
+import 'package:event/screens/Login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // Use the Navigator to push the LoginScreen onto the stack
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => MyLogin()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       );
     });
   }
@@ -38,9 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ]
           ),
         ),
-        child:Center(
-          child: Image.asset('assets/icon.png'),
-        ),
+
       ),
     );
   }

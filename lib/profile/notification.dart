@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 class NotificationSettings extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _NotificationSettingsState extends State<NotificationSettings> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Notification Settings'),
-        backgroundColor: Colors.green,
+        backgroundColor: kPrimaryColor,
       ),
       body: ListView(
         padding: EdgeInsets.all(12),

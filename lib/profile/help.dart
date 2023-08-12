@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,7 +13,7 @@ class HelpCenterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Help Center'),
-        backgroundColor: Colors.brown,
+        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

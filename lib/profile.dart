@@ -2,7 +2,6 @@ import 'package:event/profile/tnc.dart';
 import 'package:event/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:event/login.dart';
 import 'package:event/profile/notification.dart';
 import 'package:event/profile/Faqs.dart';
 import 'package:event/profile/tnc.dart';
@@ -155,7 +154,7 @@ Widget logoutTile(BuildContext context) {
     onTap: () {
       // Perform the logout action here
       // For demonstration, just navigate to the LogoutScreen
-      FirebaseAuth.instance.signOut().then((value){Navigator.pushNamed(context, 'login');});
+      FirebaseAuth.instance.signOut().then((value){Navigator.pushNamed(context, 'welcome');});
     },
   );
 }
