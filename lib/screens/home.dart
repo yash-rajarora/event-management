@@ -51,8 +51,123 @@ class HomeScreen extends StatelessWidget {
                     ),
                 ),
                 Gap(35),
-                Text("Ongoing Events", style: Styles.headLineStyle2),
-              
+                Text("Discover Events", style: Styles.headLineStyle2),
+                Gap(40),
+                Container(
+                  width: 400,
+                  height: 225,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 25,),
+                      Align(
+                        alignment: Alignment.center,
+                        child:Text("JECRC Cloud Summit 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
+                      ),
+                      SizedBox(height: 15,),
+                      Row(
+                        children: [
+                          Gap(20),
+                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
+                          Gap(17),
+                          Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
+                        ],
+                      ),
+                      SizedBox(height: 15,),
+                      Row(
+                        children: [
+                          Gap(20),
+                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
+                          Gap(17),
+                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket'), backgroundColor: Color.fromARGB(225,223,187,103),),
+                    ],
+                  ),
+                ),
+                Gap(40),
+                Container(
+                  width: 400,
+                  height: 225,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 25,),
+                      Align(
+                        alignment: Alignment.center,
+                        child:Text("JECRC MUN 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
+                      ),
+                      SizedBox(height: 15,),
+                      Row(
+                        children: [
+                          Gap(20),
+                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
+                          Gap(17),
+                          Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
+                        ],
+                      ),
+                      SizedBox(height: 15,),
+                      Row(
+                        children: [
+                          Gap(20),
+                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
+                          Gap(17),
+                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket'), backgroundColor: Color.fromARGB(225,223,187,103),),
+                    ],
+                  ),
+                ),
+                Gap(40),
+                Container(
+                  width: 400,
+                  height: 225,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 25,),
+                      Align(
+                        alignment: Alignment.center,
+                        child:Text("JECRC Ren 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
+                      ),
+                      SizedBox(height: 15,),
+                      Row(
+                        children: [
+                          Gap(20),
+                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
+                          Gap(17),
+                          Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
+                        ],
+                      ),
+                      SizedBox(height: 15,),
+                      Row(
+                        children: [
+                          Gap(20),
+                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
+                          Gap(17),
+                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
+
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket'), backgroundColor: Color.fromARGB(225,223,187,103),),
+                    ],
+                  ),
+                ),
+                Gap(20)
               ],
 
 
