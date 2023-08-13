@@ -38,7 +38,7 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+            padding: const EdgeInsets.only(top: defaultPadding),
             child: TextFormField(
               controller: _PasswordController,
               textInputAction: TextInputAction.done,
@@ -53,14 +53,66 @@ class LoginForm extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+            alignment: Alignment.topRight,
+            child: TextButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, 'forgot');
+                },
+                child: Text(
+                    'Fogot Password',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.bold
+                    ),
+                )
+            ),
+          ),
           const SizedBox(height: defaultPadding),
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
               onPressed: () {
-                FirebaseAuth.instance.signInWithEmailAndPassword(email: _EmailController.text, password: _PasswordController.text).then((value) {
-                  Navigator.pushNamed(context, 'home');}).onError((error, stackTrace) {
-                  Fluttertoast.showToast(msg: "Invalid Email or Password");
+                FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: _EmailController.text,
+                  password: _PasswordController.text,
+                ).then((value) {
+                  Navigator.pushNamed(context, 'home');
+                }).catchError((error, stackTrace) {
+                  String errorMessage = "An error occurred. Please try again later.";
+
+                  if (error is FirebaseAuthException) {
+                    errorMessage = error.message ?? errorMessage;
+                  }
+
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0), // Add border radius here
+                        ),
+                        title: Text(
+                          "Error",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Colors.red, // Customize the color
+                          ),
+                        ),
+                        content: Text(errorMessage),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 });
               },
               child: Text(

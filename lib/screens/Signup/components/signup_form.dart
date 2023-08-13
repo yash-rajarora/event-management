@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../Login/login_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 final _EmailController = TextEditingController();
 final _PasswordController = TextEditingController();
@@ -56,12 +58,55 @@ class SignUpForm extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  email: _EmailController.text,
-                  password: _PasswordController.text
+                email: _EmailController.text,
+                password: _PasswordController.text,
               ).then((value) {
                 Navigator.pushNamed(context, 'home');
-              }).onError((error, stackTrace) {
-                print("Error ${error.toString()}");
+              }).catchError((error, stackTrace) {
+                String errorMessage = "An error occurred. Please try again later.";
+
+                if (error is FirebaseAuthException) {
+                  errorMessage = error.message ?? errorMessage;
+                }
+
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0), // Add border radius here
+                      ),
+                      title: Text(
+                        "Error",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.red, // Customize the color
+                        ),
+                      ),
+                      content: Text(
+                        errorMessage,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black, // Customize the color
+                        ),
+                      ),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text(
+                            "OK",
+                            style: TextStyle(
+                              color: Colors.blue, // Customize the color
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
               });
             },
             child: Text("Sign Up".toUpperCase()),

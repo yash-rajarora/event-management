@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 25,),
                       Align(
                         alignment: Alignment.center,
-                        child:Text("JECRC Cloud Summit 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
+                        child:Text("JECRC Summit 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
                       ),
                       SizedBox(height: 15,),
                       Row(

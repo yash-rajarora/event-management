@@ -1,12 +1,17 @@
+import 'package:event/screens/forgot/components/forgot_form.dart';
+import 'package:event/screens/forgot/components/forgot_screen_top_image.dart';
 import 'package:flutter/material.dart';
-import '../../responsive.dart';
+import 'package:event/responsive.dart';
 import '../../components/background.dart';
-import 'components/login_form.dart';
-import 'components/login_screen_top_image.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class forgot_password extends StatefulWidget {
+  const forgot_password({super.key});
 
+  @override
+  State<forgot_password> createState() => _forgot_passwordState();
+}
+
+class _forgot_passwordState extends State<forgot_password> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,13 +19,13 @@ class LoginScreen extends StatelessWidget {
         child: Background(
           child: SingleChildScrollView(
             child: Container(
-               // Debug color for SingleChildScrollView
+              // Debug color for SingleChildScrollView
               child: Responsive(
                 mobile: const MobileLoginScreen(),
                 desktop: Row(
                   children: [
                     const Expanded(
-                      child: LoginScreenTopImage(),
+                      child: ForgotScreenTopImage(),
                     ),
                     Expanded(
                       child: Row(
@@ -28,7 +33,7 @@ class LoginScreen extends StatelessWidget {
                         children: const [
                           SizedBox(
                             width: 450,
-                            child: LoginForm(),
+                            child: ForgotForm(),
                           ),
                         ],
                       ),
@@ -43,8 +48,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-
 class MobileLoginScreen extends StatelessWidget {
   const MobileLoginScreen({
     Key? key,
@@ -56,13 +59,13 @@ class MobileLoginScreen extends StatelessWidget {
 
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const LoginScreenTopImage(),
+        const ForgotScreenTopImage(),
         Row(
           children: const [
             Spacer(),
             Expanded(
               flex: 8,
-              child: LoginForm(),
+              child: ForgotForm(),
             ),
             Spacer(),
           ],
