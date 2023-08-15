@@ -57,25 +57,6 @@ class LoginAndSignupBtn extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        const SizedBox(height: 16),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return BottomBar();
-                },
-              ),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-              primary: kPrimaryLightColor, elevation: 0),
-          child: Text(
-            "Home".toUpperCase(),
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
       ],
     );
   }

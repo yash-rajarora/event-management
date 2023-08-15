@@ -1,4 +1,3 @@
-import 'package:event/forgot.dart';
 import 'package:event/preloader.dart';
 import 'package:event/screens/Login/login_screen.dart';
 import 'package:event/screens/Signup/signup_screen.dart';
@@ -8,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:event/screens/bottom_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.7);
@@ -45,12 +45,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool stayLoggedIn = prefs.getBool('stayLoggedIn') ?? false;
+
   runApp(MaterialApp(
     home:  const BottomBar(),
     debugShowCheckedModeBanner: false,
     theme: theme,
 
-    initialRoute: 'welcome',
+    initialRoute: stayLoggedIn ? 'home' : 'welcome', // Navigate based on login status
     routes: {
       'welcome':(context) => WelcomeScreen(),
       'preloader' : (context) => SplashScreen(),

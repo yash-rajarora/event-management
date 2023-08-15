@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../Signup/signup_screen.dart';
 
@@ -54,7 +55,6 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           Container(
-            alignment: Alignment.topRight,
             child: TextButton(
                 onPressed: (){
                   Navigator.pushNamed(context, 'forgot');
@@ -77,8 +77,12 @@ class LoginForm extends StatelessWidget {
                 FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: _EmailController.text,
                   password: _PasswordController.text,
-                ).then((value) {
-                  Navigator.pushNamed(context, 'home');
+                ).then((value) async {
+                  // Save the login status
+                  final SharedPreferences prefs = await SharedPreferences.getInstance();
+                  await prefs.setBool('stayLoggedIn', true);
+
+                  Navigator.pushReplacementNamed(context, 'home');
                 }).catchError((error, stackTrace) {
                   String errorMessage = "An error occurred. Please try again later.";
 

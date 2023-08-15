@@ -7,6 +7,7 @@ import 'package:event/profile/Faqs.dart';
 import 'package:event/profile/tnc.dart';
 import 'package:event/profile/help.dart';
 import 'package:event/profile/privacy.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Profile extends StatefulWidget {
@@ -151,10 +152,13 @@ Widget logoutTile(BuildContext context) {
       ),
     ),
     title: Text('Logout', style: TextStyle(color: Colors.red)),
-    onTap: () {
-      // Perform the logout action here
-      // For demonstration, just navigate to the LogoutScreen
-      FirebaseAuth.instance.signOut().then((value){Navigator.pushNamed(context, 'welcome');});
+    onTap: () async {
+      await FirebaseAuth.instance.signOut();
+
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('stayLoggedIn', false);
+
+      Navigator.pushNamed(context, 'welcome'); // Replace 'welcome' with your welcome route name
     },
   );
 }
