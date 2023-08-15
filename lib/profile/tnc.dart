@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: TncScreen(),
-  ));
-}
 
 class TncScreen extends StatelessWidget {
   @override
@@ -20,7 +15,7 @@ class TncScreen extends StatelessWidget {
         child: ListView(
           children: [
             Text(
-              '                Terms and Conditions',
+              '               Terms and Conditions',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

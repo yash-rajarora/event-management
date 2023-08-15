@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-class NotificationSettings extends StatefulWidget {
-  @override
-  _NotificationSettingsState createState() => _NotificationSettingsState();
+void main() {
+  runApp(MaterialApp(
+    home: SettingsScreen(),
+  ));
 }
 
-class _NotificationSettingsState extends State<NotificationSettings> {
-  bool _notificationsEnabled = true;
+class SettingsScreen extends StatefulWidget {
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
 
-  void _toggleNotifications(bool newValue) {
-    setState(() {
-      _notificationsEnabled = newValue;
-    });
-  }
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool notificationsEnabled = true; // Initial value
 
   @override
   Widget build(BuildContext context) {
@@ -22,27 +22,43 @@ class _NotificationSettingsState extends State<NotificationSettings> {
         title: Text('Notification Settings'),
         backgroundColor: kPrimaryColor,
       ),
-      body: ListView(
-        padding: EdgeInsets.all(12),
-        children: [
-          ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Receive Notifications'),
-            trailing: Switch(
-              value: _notificationsEnabled,
-              onChanged: (newValue) {
-                _toggleNotifications(newValue);
-              },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Notification Settings',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          ListTile(
-            title: Text('Manage Notifications'),
-            onTap: () {
-              // Navigate to another screen for managing notifications
-              // For example: Navigator.push(context, MaterialPageRoute(builder: (context) => ManageNotificationsScreen()));
-            },
-          ),
-        ],
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Text(
+                  'Enable Notifications',
+                  style: TextStyle(fontSize: 16),
+                ),
+                Spacer(),
+                Switch(
+                  value: notificationsEnabled,
+                  onChanged: (value) {
+                    setState(() {
+                      notificationsEnabled = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              'When enabled, you will receive notifications for new events and updates.',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:event/profile/referral.dart';
 import 'package:event/profile/tnc.dart';
 import 'package:event/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +8,11 @@ import 'package:event/profile/Faqs.dart';
 import 'package:event/profile/tnc.dart';
 import 'package:event/profile/help.dart';
 import 'package:event/profile/privacy.dart';
+<<<<<<< Updated upstream
 import 'package:shared_preferences/shared_preferences.dart';
+=======
+import 'package:event/profile/referral.dart';
+>>>>>>> Stashed changes
 
 
 class Profile extends StatefulWidget {
@@ -33,7 +38,9 @@ class _ProfileState extends State<Profile> {
           divider(),
           bwTiles(context),
           divider(),
-          logoutTile(context)
+          logoutTile(context),
+          SizedBox(height: 10),
+          version()
         ],
       ),
     );
@@ -73,13 +80,13 @@ Widget colorTiles(BuildContext context) {
       colorTile(Icons.settings_outlined, Colors.blue, "Notifications", () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NotificationSettings()),
+          MaterialPageRoute(builder: (context) => SettingsScreen()),
         );
       }),
       colorTile(Icons.wallet, Colors.pinkAccent, "Referral code", () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => ReferralCodeScreen()),
         );
       }),
     ],
@@ -160,5 +167,22 @@ Widget logoutTile(BuildContext context) {
 
       Navigator.pushNamed(context, 'welcome'); // Replace 'welcome' with your welcome route name
     },
+  );
+}
+
+
+Widget version() {
+  return Align(
+    alignment: Alignment.center,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Text(
+        'Version 2.0.3',
+        style: TextStyle(
+          fontSize: 14,
+          color: Colors.grey,
+        ),
+      ),
+    ),
   );
 }

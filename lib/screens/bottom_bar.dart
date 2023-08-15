@@ -1,8 +1,10 @@
+import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:event/profile.dart';
 import 'package:event/screens/home.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -34,7 +36,7 @@ class _BottomBarState extends State<BottomBar> {
 
       body: Center(child: _widgetOptions[_selectedIndex],),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 18, 62, 63),
+        backgroundColor: kPrimaryColor,
 
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
