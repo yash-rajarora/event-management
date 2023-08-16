@@ -5,14 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:event/profile/notification.dart';
 import 'package:event/profile/Faqs.dart';
-import 'package:event/profile/tnc.dart';
 import 'package:event/profile/help.dart';
 import 'package:event/profile/privacy.dart';
-<<<<<<< Updated upstream
+
 import 'package:shared_preferences/shared_preferences.dart';
-=======
-import 'package:event/profile/referral.dart';
->>>>>>> Stashed changes
 
 
 class Profile extends StatefulWidget {

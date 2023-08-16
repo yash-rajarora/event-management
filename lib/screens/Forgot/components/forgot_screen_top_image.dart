@@ -14,9 +14,15 @@ class _ForgotScreenTopImageState extends State<ForgotScreenTopImage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: defaultPadding * 2),
         Text(
           "Forgot Password",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: kPrimaryColor,
+
+          ),
         ),
         SizedBox(height: defaultPadding * 2),
         Row(
@@ -24,7 +30,7 @@ class _ForgotScreenTopImageState extends State<ForgotScreenTopImage> {
             const Spacer(),
             Expanded(
               flex: 8,
-              child: SvgPicture.asset("assets/icons/login.svg"),
+              child: SvgPicture.asset("assets/icons/forgot.svg"),
             ),
             const Spacer(),
           ],

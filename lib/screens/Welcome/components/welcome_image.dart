@@ -13,10 +13,11 @@ class WelcomeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: defaultPadding * 2),
         Text(
           style: GoogleFonts.poppins(
             textStyle: TextStyle(color: kPrimaryColor),
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: FontWeight.w700
           ),
 
