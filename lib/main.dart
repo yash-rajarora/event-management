@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:event/screens/bottom_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:event/screens/Home/admin_home.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.7);
@@ -60,7 +61,8 @@ void main() async {
       'login' : (context) => LoginScreen(),
       'register' : (context) => SignUpScreen(),
       'forgot':(context) => forgot_password(),
-      'home':(context) => BottomBar()
+      'home':(context) => BottomBar(),
+      'admin_home':(context) => AdminHome(),
     },
 
   ));

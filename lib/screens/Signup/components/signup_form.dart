@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../Login/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 
 final _EmailController = TextEditingController();
@@ -61,8 +63,17 @@ class SignUpForm extends StatelessWidget {
                 email: _EmailController.text,
                 password: _PasswordController.text,
               ).then((value) {
-                Navigator.pushNamed(context, 'home');
+                // Create a Firestore document to store user information
+                FirebaseFirestore.instance.collection('users').doc(value.user?.uid).set({
+                  'email': _EmailController.text,
+                  'role': 'user', // Set the user's role as "user"
+                }).then((_) {
+                  Navigator.pushNamed(context, 'home');
+                }).catchError((error) {
+                  // Handle Firestore document creation error
+                });
               }).catchError((error, stackTrace) {
+
                 String errorMessage = "An error occurred. Please try again later.";
 
                 if (error is FirebaseAuthException) {
@@ -107,6 +118,7 @@ class SignUpForm extends StatelessWidget {
                     );
                   },
                 );
+
               });
             },
             child: Text("Sign Up".toUpperCase()),
@@ -130,3 +142,4 @@ class SignUpForm extends StatelessWidget {
     );
   }
 }
+

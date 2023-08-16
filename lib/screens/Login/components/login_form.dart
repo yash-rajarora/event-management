@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../Signup/signup_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.7);
@@ -73,52 +74,61 @@ class LoginForm extends StatelessWidget {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: () {
-                FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: _EmailController.text,
-                  password: _PasswordController.text,
-                ).then((value) async {
-                  // Save the login status
-                  final SharedPreferences prefs = await SharedPreferences.getInstance();
-                  await prefs.setBool('stayLoggedIn', true);
+              onPressed: () {FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _EmailController.text,
+                password: _PasswordController.text,
+              ).then((value) async {
+// Save the login status
+                final SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setBool('stayLoggedIn', true);
 
-                  Navigator.pushReplacementNamed(context, 'home');
-                }).catchError((error, stackTrace) {
-                  String errorMessage = "An error occurred. Please try again later.";
+// Fetch user's role from Firestore
+                final user = FirebaseAuth.instance.currentUser;
+                final userDoc = await FirebaseFirestore.instance.collection('users').doc(user?.uid).get();
+                final userRole = userDoc.data()?['role'];
 
-                  if (error is FirebaseAuthException) {
-                    errorMessage = error.message ?? errorMessage;
-                  }
+// Check user's role
+                if (userRole == 'admin') {
+                  Navigator.pushReplacementNamed(context, 'admin_home'); // Replace with your admin page route
+                } else {
+                  Navigator.pushReplacementNamed(context, 'home'); // Replace with your user page route
+                }
+              }).catchError((error, stackTrace) {
+                String errorMessage = "An error occurred. Please try again later.";
 
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0), // Add border radius here
+                if (error is FirebaseAuthException) {
+                  errorMessage = error.message ?? errorMessage;
+                }
+
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0), // Add border radius here
+                      ),
+                      title: Text(
+                        "Error",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.red, // Customize the color
                         ),
-                        title: Text(
-                          "Error",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
-                            color: Colors.red, // Customize the color
-                          ),
+                      ),
+                      content: Text(errorMessage),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text("OK"),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                         ),
-                        content: Text(errorMessage),
-                        actions: <Widget>[
-                          TextButton(
-                            child: Text("OK"),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                });
-              },
+                      ],
+                    );
+                  },
+                );
+              });
+                },
               child: Text(
                 "Login".toUpperCase(),
               ),
@@ -143,3 +153,5 @@ class LoginForm extends StatelessWidget {
     );
   }
 }
+
+
