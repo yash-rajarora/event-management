@@ -69,12 +69,8 @@ class SignUpForm extends StatelessWidget {
                   'email': _EmailController.text,
                   'role': 'user', // Set the user's role as "user"
                 }).then((_) {
-                  Navigator.pushNamed(context, 'home');
-                }).catchError((error) {
-                  // Handle Firestore document creation error
+                  Navigator.pushNamed(context, 'first_profile_data');
                 });
-
-                Navigator.pushNamed(context, 'first_profile_data');
 
               }).catchError((error, stackTrace) {
 
