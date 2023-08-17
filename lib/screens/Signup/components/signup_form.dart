@@ -100,9 +100,11 @@ class SignUpForm extends StatelessWidget {
                 // Create a Firestore document to store user information
                 FirebaseFirestore.instance.collection('users').doc(value.user?.uid).set({
                   'email': _EmailController.text,
+                  'firstName': firstNameController.text,
+                  'lastName' : lastNameController.text,
                   'role': 'user', // Set the user's role as "user"
                 }).then((_) {
-                  Navigator.pushNamed(context, 'first_profile_data');
+                  Navigator.pushNamed(context, 'home');
                 });
 
               }).catchError((error, stackTrace) {

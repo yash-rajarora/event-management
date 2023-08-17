@@ -7,7 +7,7 @@ import 'package:event/profile/notification.dart';
 import 'package:event/profile/Faqs.dart';
 import 'package:event/profile/help.dart';
 import 'package:event/profile/privacy.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -50,8 +50,9 @@ Widget userTile() {
     leading: CircleAvatar(
       backgroundImage: NetworkImage(url),
     ),
+
     title: const Text("supriya"),
-    subtitle: const Text("ux designer"),
+    subtitle: const Text(""),
   );
 }
 
