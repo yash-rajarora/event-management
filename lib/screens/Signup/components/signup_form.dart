@@ -63,6 +63,7 @@ class SignUpForm extends StatelessWidget {
                 email: _EmailController.text,
                 password: _PasswordController.text,
               ).then((value) {
+
                 // Create a Firestore document to store user information
                 FirebaseFirestore.instance.collection('users').doc(value.user?.uid).set({
                   'email': _EmailController.text,
@@ -72,6 +73,9 @@ class SignUpForm extends StatelessWidget {
                 }).catchError((error) {
                   // Handle Firestore document creation error
                 });
+
+                Navigator.pushNamed(context, 'first_profile_data');
+
               }).catchError((error, stackTrace) {
 
                 String errorMessage = "An error occurred. Please try again later.";

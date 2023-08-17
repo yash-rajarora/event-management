@@ -8,7 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:event/screens/bottom_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:event/screens/Home/admin_home.dart';
+
+import 'first_profile_data.dart';
+
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.7);
@@ -63,6 +67,8 @@ void main() async {
       'forgot':(context) => forgot_password(),
       'home':(context) => BottomBar(),
       'admin_home':(context) => AdminHome(),
+      'home':(context) => BottomBar(),''
+      'first_profile_data' :(context) => UserProfileScreen()
     },
 
   ));

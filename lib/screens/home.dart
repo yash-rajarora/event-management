@@ -3,7 +3,6 @@ import 'package:event/utils/app_styles.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -22,9 +21,9 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Gap(25),
+                
                 Text("Discover Events" , style: Styles.headLineStyle1,),
-                Gap(25),
+
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
@@ -40,9 +39,9 @@ class HomeScreen extends StatelessWidget {
                         ],
                     ),
                 ),
-                Gap(35),
+
                 Text("Discover Events", style: Styles.headLineStyle2),
-                Gap(40),
+
                 Container(
                   width: 400,
                   height: 225,
@@ -60,18 +59,18 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 15,),
                       Row(
                         children: [
-                          Gap(20),
+                           
                           Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
-                          Gap(17),
+
                           Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
                         ],
                       ),
                       SizedBox(height: 15,),
                       Row(
                         children: [
-                          Gap(20),
+                           
                           Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
-                          Gap(17),
+
                           Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
                         ],
                       ),
@@ -80,7 +79,6 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Gap(40),
                 Container(
                   width: 400,
                   height: 225,
@@ -98,18 +96,18 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 15,),
                       Row(
                         children: [
-                          Gap(20),
+                           
                           Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
-                          Gap(17),
+
                           Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
                         ],
                       ),
                       SizedBox(height: 15,),
                       Row(
                         children: [
-                          Gap(20),
+                           
                           Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
-                          Gap(17),
+
                           Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
                         ],
                       ),
@@ -118,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Gap(40),
+
                 Container(
                   width: 400,
                   height: 225,
@@ -136,18 +134,17 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 15,),
                       Row(
                         children: [
-                          Gap(20),
+                           
                           Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
-                          Gap(17),
                           Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
                         ],
                       ),
                       SizedBox(height: 15,),
                       Row(
                         children: [
-                          Gap(20),
+                           
                           Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
-                          Gap(17),
+
                           Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
 
                         ],
@@ -157,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Gap(20)
+
               ],
 
 
