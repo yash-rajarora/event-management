@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../Login/login_screen.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
-
+final TextEditingController firstNameController = TextEditingController();
+final TextEditingController lastNameController = TextEditingController();
 final _EmailController = TextEditingController();
 final _PasswordController = TextEditingController();
 
@@ -26,6 +25,40 @@ class SignUpForm extends StatelessWidget {
     return Form(
       child: Column(
         children: [
+          TextField(
+            controller: firstNameController,
+            keyboardType: TextInputType.name,
+            textInputAction: TextInputAction.next,
+            cursorColor: kPrimaryColor,
+            onChanged: (firstNameController) {},
+            decoration: InputDecoration(
+              hintText: 'First Name',
+              fillColor: kPrimaryLightColor, // Change to your desired color
+              filled: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            controller: lastNameController,
+            keyboardType: TextInputType.name,
+            textInputAction: TextInputAction.next,
+            cursorColor: kPrimaryColor,
+            onChanged: (lastNameController) {},
+            decoration: InputDecoration(
+              hintText: 'Last Name',
+              fillColor: kPrimaryLightColor, // Change to your desired color
+              filled: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
           TextFormField(
             controller: _EmailController,
             keyboardType: TextInputType.emailAddress,

@@ -1,8 +1,6 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
-import 'package:event/screens/bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final TextEditingController firstNameController = TextEditingController();
