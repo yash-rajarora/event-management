@@ -36,7 +36,7 @@ class OfflineEventScreen extends StatelessWidget {
           ),
           SizedBox(width: 12,),
           Container(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 5),
             width: screenWidth*0.4,
             child: Column(
               children: [
@@ -47,7 +47,7 @@ class OfflineEventScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 22,),
+                SizedBox(height: 10,),
                 Row(
                   children: [
                     Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.white,size: 15,),
@@ -55,7 +55,7 @@ class OfflineEventScreen extends StatelessWidget {
                     Expanded(child:Text("1 - 3 January 2023", style: TextStyle(color: Colors.white , fontSize: 15),maxLines: 4,)
                     ),],
                 ),
-                SizedBox(height: 22,),
+                SizedBox(height: 10,),
                 Row(
                   children: [
                     Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.white,size: 15,),
@@ -63,7 +63,7 @@ class OfflineEventScreen extends StatelessWidget {
                     Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.white, fontSize: 15) ,maxLines: 4,),)
                   ],
                 ),
-                SizedBox(height: 32,),
+                SizedBox(height: 15,),
                 FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.black),), backgroundColor: Colors.white, ),
               ],
             ),

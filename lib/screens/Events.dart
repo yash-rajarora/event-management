@@ -33,7 +33,7 @@ class EventScreen extends StatelessWidget {
           showModalBottomSheet(context: context,
             builder: (BuildContext context){
               return Container(
-                  height: 600.0,
+                  height: 650.0,
                   child: Container(
                     child: Column(
                       children: [
