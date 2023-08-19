@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:event/screens/Admin_Home/Component/create_event.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminHome extends StatelessWidget {
   @override
@@ -30,9 +33,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My App'),
-      ),
+
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -63,8 +64,8 @@ class _HomePageState extends State<HomePage> {
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Home Page Content'),
+    return Container(
+      child: CreateEvent(),
     );
   }
 }
@@ -82,7 +83,26 @@ class ProfileContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Profile Page Content'),
+      child: ListTile(
+        leading: Container(
+          child: Icon(Icons.logout, color: Colors.red),
+          height: 45,
+          width: 45,
+          decoration: BoxDecoration(
+            color: Colors.red.withOpacity(0.09),
+            borderRadius: BorderRadius.circular(18),
+          ),
+        ),
+        title: Text('Logout', style: TextStyle(color: Colors.red)),
+        onTap: () async {
+          await FirebaseAuth.instance.signOut();
+
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('stayLoggedIn', false);
+
+          Navigator.pushNamed(context, 'welcome'); // Replace 'welcome' with your welcome route name
+        },
+      ),
     );
   }
 }

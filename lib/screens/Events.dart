@@ -10,7 +10,7 @@ class EventScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth*0.9,
-      height: 530,
+      height: 550,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       margin: const EdgeInsets.only(right: 20, top: 5),
       decoration: BoxDecoration(

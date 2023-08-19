@@ -20,11 +20,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: ListView(
           children: [
-            SizedBox(height: 20),
-            Container(
-              padding: EdgeInsets.only(right: 25),
-              child: userTile(),
-            ),
+            SizedBox(height: 40),
+
             Container(
               padding: EdgeInsets.only(left: 25),
               child: Text("Discover Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
@@ -84,15 +81,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-Widget userTile() {
-  String url =
-      "https://i.pinimg.com/236x/3f/11/9f/3f119fc68701915b53cf00164fef1293.jpg"; // Replace this with a valid image URL
-  return Align(
-      alignment: Alignment.topRight,
-      child: CircleAvatar(
-        backgroundColor: Colors.grey,
-        // backgroundImage: NetworkImage(url),
-        radius: 28,
-      )
-  );
-}
+

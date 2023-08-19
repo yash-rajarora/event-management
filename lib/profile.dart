@@ -10,7 +10,6 @@ import 'package:event/profile/privacy.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class Profile extends StatefulWidget {
   const Profile({super.key});
 

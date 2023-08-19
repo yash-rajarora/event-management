@@ -1,6 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:event/constants.dart';
 
 
 class OnlineEventScreen extends StatelessWidget {
@@ -11,11 +12,11 @@ class OnlineEventScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth*0.6,
-      height: 370,
+      height: 400,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       margin: const EdgeInsets.only(right: 20, top: 5),
       decoration: BoxDecoration(
-          color: Colors.black87,
+          color: kPrimaryColor,
           borderRadius: BorderRadius.circular(25),
           boxShadow: [
             BoxShadow(
@@ -31,13 +32,11 @@ class OnlineEventScreen extends StatelessWidget {
             height: 150,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: Colors.grey,
-              // image: DecorationImage(
-              //   fit: BoxFit.cover,
-              // image: AssetImage(
-              //   "assets/image/home.png"
-              // )
-              // )
+
+                image: new DecorationImage(
+                  image: new AssetImage("assets/images/event121.png"),
+                  fit: BoxFit.fill,
+                )
             ),
           ),
           SizedBox(height: 20),

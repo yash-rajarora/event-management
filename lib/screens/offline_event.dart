@@ -11,7 +11,7 @@ class OfflineEventScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth*0.6,
-      height: 370,
+      height: 400,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       margin: const EdgeInsets.only(right: 20, top: 5),
       decoration: BoxDecoration(

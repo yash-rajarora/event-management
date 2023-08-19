@@ -110,6 +110,21 @@ class CreateEvent extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30, right: 30),
               child: TextFormField(
                 decoration: InputDecoration(
+                  hintText: 'Google link',
+                  fillColor: kPrimaryLightColor, // Change to your desired color
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child: TextFormField(
+                decoration: InputDecoration(
                   hintText: 'Time',
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,

@@ -1,5 +1,7 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:event/profile.dart';
+import 'package:event/screens/Home/Explore.dart';
+import 'package:event/screens/Home/MyTicket.dart';
 import 'package:event/screens/home.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,8 +22,8 @@ class _BottomBarState extends State<BottomBar> {
   int _selectedIndex=0;
   static final List<Widget>_widgetOptions = <Widget>[
     HomeScreen(),
-    const Text("search"),
-    const Text("Explore"),
+    ExplorePage(),
+    MyTicket(),
     Profile()
   ];
 
@@ -38,17 +40,16 @@ class _BottomBarState extends State<BottomBar> {
 
       body: Center(child: _widgetOptions[_selectedIndex],),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Colors.white,
 
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
         elevation: 10,
-        selectedItemColor: Colors.white,
+        selectedItemColor: kPrimaryColor,
         unselectedItemColor: Color.fromARGB(255, 162, 166, 172),
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        
         
         items:const [
         BottomNavigationBarItem(
@@ -63,8 +64,8 @@ class _BottomBarState extends State<BottomBar> {
         ),
         BottomNavigationBarItem(
           label: "Explore",
-          icon: Icon(Icons.explore_outlined),
-          activeIcon: Icon(Icons.explore),
+          icon: Icon(CupertinoIcons.ticket),
+          activeIcon: Icon(CupertinoIcons.ticket_fill),
         ),
         BottomNavigationBarItem(
           label: "Profile",
