@@ -82,7 +82,7 @@ class EventCard extends StatelessWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
             child: Image.network(
               event.image,
-              height: 390,
+              height: 360,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
