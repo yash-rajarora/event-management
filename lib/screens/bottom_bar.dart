@@ -5,6 +5,8 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
+const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});

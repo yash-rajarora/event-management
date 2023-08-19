@@ -1,8 +1,16 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
+import 'package:event/screens/Events.dart';
+import 'package:event/screens/offline_event.dart';
+import 'package:event/screens/online_events.dart';
 import 'package:event/utils/app_styles.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
+const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
+const kPrimaryLightColor2 = Color.fromRGBO(203, 209, 143,0.4);
 
 
 class HomeScreen extends StatelessWidget {
@@ -11,160 +19,81 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      backgroundColor: kPrimaryColor,
-
-      body: ListView(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                
-                Text("Discover Events" , style: Styles.headLineStyle1,),
-
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: Color.fromARGB(255, 93, 91, 91))
-                    
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-                  child: Row(
-                        children: [
-                           Icon(FluentSystemIcons.ic_fluent_search_regular ,color: Styles.textColor,),
-                           SizedBox(width: 10,),
-                           Text("Search Events", style: Styles.headLineStyle4,)
-                        ],
-                    ),
-                ),
-
-                Text("Discover Events", style: Styles.headLineStyle2),
-
-                Container(
-                  width: 400,
-                  height: 225,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 25,),
-                      Align(
-                        alignment: Alignment.center,
-                        child:Text("JECRC Summit 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
-                      ),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: [
-                           
-                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
-
-                          Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
-                        ],
-                      ),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: [
-                           
-                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
-
-                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket'), backgroundColor: Color.fromARGB(225,223,187,103),),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 400,
-                  height: 225,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 25,),
-                      Align(
-                        alignment: Alignment.center,
-                        child:Text("JECRC MUN 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
-                      ),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: [
-                           
-                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
-
-                          Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
-                        ],
-                      ),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: [
-                           
-                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
-
-                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket'), backgroundColor: Color.fromARGB(225,223,187,103),),
-                    ],
-                  ),
-                ),
-
-                Container(
-                  width: 400,
-                  height: 225,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 25,),
-                      Align(
-                        alignment: Alignment.center,
-                        child:Text("JECRC Ren 2023", style: Styles.headLineStyle5, textAlign: TextAlign.center,),
-                      ),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: [
-                           
-                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.blueGrey,size: 20,),
-                          Text("1 - 3 January 2023 ( 3 Days )", style: Styles.headLineStyle4,)
-                        ],
-                      ),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: [
-                           
-                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.blueGrey,size: 20,),
-
-                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: Styles.headLineStyle4 ,maxLines: 2,),)
-
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket'), backgroundColor: Color.fromARGB(225,223,187,103),),
-                    ],
-                  ),
-                ),
-
-              ],
-
-
+        body: ListView(
+          children: [
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.only(right: 25),
+              child: userTile(),
             ),
-
-          )
-        ],
-      ),
-        
-      
+            Container(
+              padding: EdgeInsets.only(left: 25),
+              child: Text("Discover Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+            ),
+            Gap(25),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.only(left:20),
+                child: Row(
+                  children: [
+                    EventScreen(),
+                    EventScreen(),
+                    EventScreen(),
+                    EventScreen(),
+                  ],
+                )
+            ),
+            Gap(25),
+            Container(
+              padding: EdgeInsets.only(left: 25),
+              child: Text("Online Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+            ),
+            Gap(25),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(left:20),
+              child: Row(
+                children: [
+                  OnlineEventScreen(),
+                  OnlineEventScreen(),
+                  OnlineEventScreen(),
+                  OnlineEventScreen(),
+                ],
+              ),
+            ),
+            Gap(25),
+            Container(
+              padding: EdgeInsets.only(left: 25),
+              child: Text("Offline Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+            ),
+            Gap(25),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(left:20),
+              child: Row(
+                children: [
+                  OfflineEventScreen(),
+                  OfflineEventScreen(),
+                  OfflineEventScreen(),
+                  OfflineEventScreen(),
+                ],
+              ),
+            ),
+            Gap(25),
+          ],
+        )
     );
   }
+}
+Widget userTile() {
+  String url =
+      "https://i.pinimg.com/236x/3f/11/9f/3f119fc68701915b53cf00164fef1293.jpg"; // Replace this with a valid image URL
+  return Align(
+      alignment: Alignment.topRight,
+      child: CircleAvatar(
+        backgroundColor: Colors.grey,
+        // backgroundImage: NetworkImage(url),
+        radius: 28,
+      )
+  );
 }
