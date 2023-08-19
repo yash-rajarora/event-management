@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
-const kPrimaryLightColor2 = Color.fromRGBO(203, 209, 143,0.4);
 
 
 class HomeScreen extends StatelessWidget {
@@ -20,16 +19,15 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: ListView(
           children: [
-            SizedBox(height: 40),
-
+            SizedBox(height: 30),
             Container(
-              padding: EdgeInsets.only(left: 25),
-              child: Text("Discover Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              padding: EdgeInsets.only(left: 15),
+              child: Text("Discover Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25,),
             SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.only(left:20),
+                padding: const EdgeInsets.only(left:15),
                 child: Row(
                   children: [
                     EventScreen(),
@@ -39,15 +37,15 @@ class HomeScreen extends StatelessWidget {
                   ],
                 )
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25,),
             Container(
-              padding: EdgeInsets.only(left: 25),
+              padding: EdgeInsets.only(left: 15),
               child: Text("Online Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25,),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.only(left:20),
+              // padding: const EdgeInsets.only(left:15),
               child: Row(
                 children: [
                   OnlineEventScreen(),
@@ -57,15 +55,15 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25,),
             Container(
               padding: EdgeInsets.only(left: 25),
               child: Text("Offline Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25,),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.only(left:20),
+              // padding: const EdgeInsets.only(left:20),
               child: Row(
                 children: [
                   OfflineEventScreen(),
@@ -75,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25,),
           ],
         )
     );
