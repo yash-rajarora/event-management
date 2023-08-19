@@ -51,8 +51,8 @@ Widget userTile() {
       backgroundImage: NetworkImage(url),
     ),
 
-    title: const Text("supriya"),
-    subtitle: const Text(""),
+    title: const Text("supriya",style: TextStyle(fontSize: 20),),
+    subtitle: const Text("flutter"),
   );
 }
 

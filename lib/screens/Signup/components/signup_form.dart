@@ -33,15 +33,13 @@ class SignUpForm extends StatelessWidget {
             onChanged: (firstNameController) {},
             decoration: InputDecoration(
               hintText: 'First Name',
-              fillColor: kPrimaryLightColor, // Change to your desired color
-              filled: true,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: BorderSide.none,
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(defaultPadding),
+                child: Icon(Icons.person),
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 5),
           TextField(
             controller: lastNameController,
             keyboardType: TextInputType.name,
@@ -50,15 +48,13 @@ class SignUpForm extends StatelessWidget {
             onChanged: (lastNameController) {},
             decoration: InputDecoration(
               hintText: 'Last Name',
-              fillColor: kPrimaryLightColor, // Change to your desired color
-              filled: true,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: BorderSide.none,
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(defaultPadding),
+                child: Icon(Icons.person),
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 5),
           TextFormField(
             controller: _EmailController,
             keyboardType: TextInputType.emailAddress,
@@ -69,13 +65,12 @@ class SignUpForm extends StatelessWidget {
               hintText: "Your email",
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(defaultPadding),
-                child: Icon(Icons.person),
+                child: Icon(Icons.email),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-            child: TextFormField(
+          SizedBox(height: 5),
+          TextFormField(
               controller: _PasswordController,
               textInputAction: TextInputAction.done,
               obscureText: true,
@@ -88,8 +83,7 @@ class SignUpForm extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: defaultPadding / 2),
+          SizedBox(height: 15),
           ElevatedButton(
             onPressed: () {
               FirebaseAuth.instance.createUserWithEmailAndPassword(
