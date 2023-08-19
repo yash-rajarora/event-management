@@ -2,7 +2,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:event/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:gap/gap.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
 // const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
@@ -137,11 +136,11 @@ class CreateEvent extends StatelessWidget {
                   color:kPrimaryLightColor ,
                   child: Column(
                     children: [
-                      Gap(30),
+                      SizedBox(height: 20),SizedBox(height: 20),
                       Text("Upload Image of Event", style: TextStyle(fontSize: 20, color: kPrimaryColor),),
-                      Gap(30),
+                      SizedBox(height: 20),
                       Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50,),
-                      Gap(30),
+                      SizedBox(height: 20),
                       FloatingActionButton.extended(onPressed: (){}, label: Text('Upload Image' , style: TextStyle(color: Colors.white),),backgroundColor: kPrimaryColor,)
                     ],
                   ),

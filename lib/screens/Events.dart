@@ -1,7 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:gap/gap.dart';
+
 class EventScreen extends StatelessWidget {
   const EventScreen({super.key});
 
@@ -39,7 +39,7 @@ class EventScreen extends StatelessWidget {
               // )
             ),
           ),
-          Gap(20),
+          SizedBox(height: 20),
           Container(
             child: Column(
               children: [
@@ -49,18 +49,18 @@ class EventScreen extends StatelessWidget {
                 SizedBox(height: 15,),
                 Row(
                   children: [
-                    Gap(20),
+                    SizedBox(height: 20),
                     Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.white,size: 20,),
-                    Gap(17),
+                    SizedBox(height: 20),
                     Text("1 - 3 January 2023 ( 3 Days )", style: TextStyle(color: Colors.white),)
                   ],
                 ),
                 SizedBox(height: 15,),
                 Row(
                   children: [
-                    Gap(20),
+                    SizedBox(height: 20),
                     Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.white,size: 20,),
-                    Gap(17),
+                    SizedBox(height: 20),
                     Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.white) ,maxLines: 2,),)
                   ],
                 ),

@@ -6,7 +6,6 @@ import 'package:event/utils/app_styles.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
@@ -30,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: 25),
               child: Text("Discover Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
             ),
-            Gap(25),
+            SizedBox(height: 20),
             SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(left:20),
@@ -43,12 +42,12 @@ class HomeScreen extends StatelessWidget {
                   ],
                 )
             ),
-            Gap(25),
+            SizedBox(height: 20),
             Container(
               padding: EdgeInsets.only(left: 25),
               child: Text("Online Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
             ),
-            Gap(25),
+            SizedBox(height: 20),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.only(left:20),
@@ -61,12 +60,12 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Gap(25),
+            SizedBox(height: 20),
             Container(
               padding: EdgeInsets.only(left: 25),
               child: Text("Offline Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
             ),
-            Gap(25),
+            SizedBox(height: 20),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.only(left:20),
@@ -79,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Gap(25),
+            SizedBox(height: 20),
           ],
         )
     );

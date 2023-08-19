@@ -50,7 +50,7 @@ class _MyForgotState extends State<MyForgot> {
                 ),
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.all(30),
+                    padding: EdgeInsets.allSizedBox(height: 20),
                     child: Column(
                       children: <Widget>[
                         SizedBox(height: 60,),
