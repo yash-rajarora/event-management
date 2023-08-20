@@ -9,6 +9,7 @@ import 'package:event/screens/bottom_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:event/screens/Admin_Home/admin_home.dart';
+import 'package:sqflite/sqflite.dart';
 
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
@@ -84,4 +85,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 

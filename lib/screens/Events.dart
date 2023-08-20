@@ -1,6 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
 class EventScreen extends StatelessWidget {
   const EventScreen({super.key});
 

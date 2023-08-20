@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:event/screens/Database/database_helper.dart';
 import 'package:event/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -110,7 +111,7 @@ class CreateEvent extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30, right: 30),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Google link',
+                  hintText: 'Date & Time',
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,
                   border: OutlineInputBorder(
@@ -125,7 +126,7 @@ class CreateEvent extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30, right: 30),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Time',
+                  hintText: 'Description',
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,
                   border: OutlineInputBorder(
@@ -166,9 +167,17 @@ class CreateEvent extends StatelessWidget {
             SizedBox(height: 30,),
             Container(
                 padding: const EdgeInsets.only(left: 30, right: 30),
-                child:FloatingActionButton.extended(onPressed: (){}, label: Text('Create' , style: TextStyle(color: Colors.white,fontSize: 20),),backgroundColor: kPrimaryColor,)
+                child:FloatingActionButton.extended(onPressed: (){
+                  insertDB();
+                }, label: Text('Create' , style: TextStyle(color: Colors.white,fontSize: 20),),backgroundColor: kPrimaryColor,)
             ),
-
+            SizedBox(height: 30,),
+            Container(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child:FloatingActionButton.extended(onPressed: (){
+                  getFromUser();
+                }, label: Text('Read Data' , style: TextStyle(color: Colors.white,fontSize: 20),),backgroundColor: kPrimaryColor,)
+            ),
           ]
       ),
     );
