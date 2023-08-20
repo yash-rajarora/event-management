@@ -1,108 +1,78 @@
-import 'package:flutter/material.dart';
+import 'package:event/profile.dart';
 import 'package:event/screens/Admin_Home/Component/create_event.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:event/screens/Home/Explore.dart';
+import 'package:event/screens/Home/MyTicket.dart';
+import 'package:event/screens/home.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class AdminHome extends StatelessWidget {
+const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
+const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
+
+class AdminHome extends StatefulWidget {
+  const AdminHome({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
+  State<AdminHome> createState() => _AdminHomeState();
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+class _AdminHomeState extends State<AdminHome> {
 
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-
-  final List<Widget> _pages = [
-    HomeContent(),
-    SearchContent(),
-    ProfileContent(),
+  int _selectedIndex=0;
+  static final List<Widget>_widgetOptions = <Widget>[
+    CreateEvent(),
+    ExplorePage(),
+    MyTicket(),
+    Profile()
   ];
+
+  void _onItemTapped(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: _pages[_currentIndex],
+
+      body: Center(child: _widgetOptions[_selectedIndex],),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
-    );
-  }
-}
+          backgroundColor: Colors.white,
 
-class HomeContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: CreateEvent(),
-    );
-  }
-}
+          type: BottomNavigationBarType.fixed,
+          onTap: _onItemTapped,
+          currentIndex: _selectedIndex,
+          elevation: 10,
+          selectedItemColor: kPrimaryColor,
+          unselectedItemColor: Color.fromARGB(255, 162, 166, 172),
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
 
-class SearchContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Search Page Content'),
-    );
-  }
-}
-
-class ProfileContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ListTile(
-        leading: Container(
-          child: Icon(Icons.logout, color: Colors.red),
-          height: 45,
-          width: 45,
-          decoration: BoxDecoration(
-            color: Colors.red.withOpacity(0.09),
-            borderRadius: BorderRadius.circular(18),
-          ),
-        ),
-        title: Text('Logout', style: TextStyle(color: Colors.red)),
-        onTap: () async {
-          await FirebaseAuth.instance.signOut();
-
-          final SharedPreferences prefs = await SharedPreferences.getInstance();
-          await prefs.setBool('stayLoggedIn', false);
-
-          Navigator.pushNamed(context, 'welcome'); // Replace 'welcome' with your welcome route name
-        },
-      ),
+          items:const [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+            ),
+            BottomNavigationBarItem(
+              label: "Search",
+              icon:Icon(FluentSystemIcons.ic_fluent_search_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
+            ),
+            BottomNavigationBarItem(
+              label: "Explore",
+              icon: Icon(CupertinoIcons.ticket),
+              activeIcon: Icon(CupertinoIcons.ticket_fill),
+            ),
+            BottomNavigationBarItem(
+              label: "Profile",
+              icon:Icon(FluentSystemIcons.ic_fluent_person_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+            ),
+          ]),
     );
   }
 }
