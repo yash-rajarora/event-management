@@ -1,3 +1,4 @@
+import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,67 +12,86 @@ class OnlineEventScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth,
-      height: 320,
+      height: 340,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
-      margin: const EdgeInsets.only(right: 5, top: 5),
+      // margin: const EdgeInsets.only(right: 1, top: 5),
       decoration: BoxDecoration(
-        color: Colors.black87,
+          color: kPrimaryLightColor,
       ),
-      child: Row(
+      child: Column(
         children: [
-          Container(
-            width: screenWidth*0.45,
-            height: 320,
-            margin: const EdgeInsets.only(right: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              // image: DecorationImage(
-              //   fit: BoxFit.cover,
-              // image: AssetImage(
-              //   "assets/image/home.png"
-              // )
-              // )
-            ),
-          ),
-          SizedBox(width: 12,),
-          Container(
-            padding: const EdgeInsets.only(top: 5),
-            width: screenWidth*0.4,
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Text("JECRC Cloud Summit",
-                    style: TextStyle(fontSize: 20, color: Colors.white,),maxLines: 2,
-                  ),
+          Row(
+            children: [
+              Container(
+                width: screenWidth*0.45,
+                height: 240,
+                margin: const EdgeInsets.only(right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                  image: AssetImage(
+                    "assets/images/discover_poster.png"
+                  )
+                  )
                 ),
+              ),
+              SizedBox(width: 12,),
+              Container(
+                padding: const EdgeInsets.only(top: 20),
+                width: screenWidth*0.4,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text("JECRC Cloud Summit",
+                        style: TextStyle(fontSize: 20, color: Colors.black,),maxLines: 2,
+                      ),
+                    ),
 
-                SizedBox(height: 10,),
-                Row(
-                  children: [
-                    Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.white,size: 15,),
-                    SizedBox(width: 5,),
-                    Expanded(child:Text("1 - 3 January 2023", style: TextStyle(color: Colors.white , fontSize: 15),maxLines: 4,)
-                    ),],
-                ),
-                SizedBox(height: 10,),
-                Row(
-                  children: [
-                    Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.white,size: 15,),
-                    SizedBox(width: 5,),
-                    Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.white, fontSize: 15) ,maxLines: 4,),)
+                    SizedBox(height: 22,),
+                    Row(
+                      children: [
+                        Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.black,size: 15,),
+                        SizedBox(width: 5,),
+                        Expanded(child:Text("1 - 3 January 2023", style: TextStyle(color: Colors.black , fontSize: 15),maxLines: 4,)
+                        ),],
+                    ),
+                    SizedBox(height: 22,),
+                    Row(
+                      children: [
+                        Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.black,size: 15,),
+                        SizedBox(width: 5,),
+                        Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.black, fontSize: 15) ,maxLines: 4,),)
+                      ],
+                    ),
+                    SizedBox(height: 32,),
+
                   ],
                 ),
-                SizedBox(height: 15,),
-                FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.black),), backgroundColor: Colors.white, ),
-              ],
-            ),
+              ),
+            ],
           ),
-
-
+          SizedBox(height: 8,),
+          Column(
+            children: [
+              SizedBox(
+                  width: 500,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
+                  style: ElevatedButton.styleFrom(
+                      elevation: 12.0,
+                      backgroundColor: Colors.white,
+                      textStyle: const TextStyle(color: Colors.black)),
+                  child: const Text('Get a ticket', style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w500),),
+                ),
+              )
+            ],
+          )
         ],
-      ),
+      )
 
     );
   }

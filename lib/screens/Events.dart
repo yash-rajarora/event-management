@@ -14,7 +14,6 @@ class EventScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       margin: const EdgeInsets.only(right: 25, top: 5),
       decoration: BoxDecoration(
-        color: Colors.black87,
         borderRadius: BorderRadius.circular(40),
         boxShadow: [
           BoxShadow(
@@ -23,10 +22,10 @@ class EventScreen extends StatelessWidget {
             spreadRadius: 2,
           )
         ],
-        // image: DecorationImage(
-        // image: AssetImage("assets/images/cat2.jpg"),
-        // fit: BoxFit.cover
-        // ),
+        image: DecorationImage(
+        image: AssetImage("assets/images/discover.jpg"),
+        fit: BoxFit.cover
+        ),
       ),
       child: Container(
         padding: const EdgeInsets.only(top: 190, right: 170,left: 20,bottom: 10),
@@ -41,12 +40,11 @@ class EventScreen extends StatelessWidget {
                         Container(
                           height: 250,
                           decoration: BoxDecoration(
-                            color: Colors.black87,
                             borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) ),
-                            // image: DecorationImage(
-                            // image: AssetImage("assets/images/cat2.jpg"),
-                            // fit: BoxFit.cover
-                            // ),
+                            image: DecorationImage(
+                            image: AssetImage("assets/images/discover_main.png"),
+                            fit: BoxFit.cover
+                            ),
                           ),
                         ),
                         SizedBox(height: 30,),

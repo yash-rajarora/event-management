@@ -3,6 +3,7 @@ import 'package:event/screens/Database/database_helper.dart';
 import 'package:event/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:event/constants.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
 // const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
@@ -69,11 +70,9 @@ class CreateEvent extends StatelessWidget {
           children: [
             SizedBox(height: 30),
             Container(
-              child: Align(
-                alignment: Alignment.center,
-                child: Text("Create Event", style: TextStyle(fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor),),
+              child: Container(
+                padding: EdgeInsets.only(left: 35),
+                child: Text("Create Event", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: kPrimaryColor),),
               ),
             ),
             SizedBox(height: 30,),
@@ -82,6 +81,10 @@ class CreateEvent extends StatelessWidget {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Event Name',
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.all(defaultPadding),
+                    child: Icon(Icons.person),
+                  ),
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,
                   border: OutlineInputBorder(
@@ -97,6 +100,10 @@ class CreateEvent extends StatelessWidget {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Location',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: Icon(Icons.location_on),
+                  ),
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,
                   border: OutlineInputBorder(
@@ -112,6 +119,10 @@ class CreateEvent extends StatelessWidget {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Date & Time',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: Icon(Icons.description_outlined),
+                  ),
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,
                   border: OutlineInputBorder(
@@ -127,6 +138,10 @@ class CreateEvent extends StatelessWidget {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Description',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: Icon(Icons.access_time),
+                  ),
                   fillColor: kPrimaryLightColor, // Change to your desired color
                   filled: true,
                   border: OutlineInputBorder(

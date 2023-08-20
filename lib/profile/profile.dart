@@ -1,12 +1,13 @@
-import 'package:event/profile/referral.dart';
-import 'package:event/profile/tnc.dart';
-import 'package:event/screens/home.dart';
+import 'package:event/components/already_have_an_account_acheck.dart';
+import 'package:event/profile/components/referral.dart';
+import 'package:event/profile/components/tnc.dart';
+import 'package:event/screens/Home/MyTicket.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:event/profile/notification.dart';
-import 'package:event/profile/Faqs.dart';
-import 'package:event/profile/help.dart';
-import 'package:event/profile/privacy.dart';
+import 'package:event/profile/components/notification.dart';
+import 'package:event/profile/components/Faqs.dart';
+import 'package:event/profile/components/help.dart';
+import 'package:event/profile/components/privacy.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -65,11 +66,11 @@ Widget userTile( String userName, String userEmail) {
       "https://i.pinimg.com/236x/3f/11/9f/3f119fc68701915b53cf00164fef1293.jpg"; // Replace this with a valid image URL
   return ListTile(
     leading: CircleAvatar(
-      backgroundImage: NetworkImage(url),
+      backgroundImage: AssetImage('assets/icons/user.png'),
     ),
 
-    title: Text(userName,style: TextStyle(fontSize: 20),),
-    subtitle: Text(userEmail),
+    title: Text(userName,style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600,color: kPrimaryColor),),
+    subtitle: Text(userEmail,style: TextStyle(color: kPrimaryColor),),
   );
 }
 
@@ -88,7 +89,7 @@ Widget colorTiles(BuildContext context) {
       colorTile(Icons.person_outline, Colors.deepPurple, "My events", () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => MyTicket()),
         );
       }),
       colorTile(Icons.settings_outlined, Colors.blue, "Notifications", () {
