@@ -7,8 +7,6 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
-const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
 
 
 class HomeScreen extends StatelessWidget {
@@ -22,7 +20,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 30),
             Container(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Discover Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              child: Text("Discover Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: kPrimaryColor),),
             ),
             SizedBox(height: 25,),
             SingleChildScrollView(
@@ -40,7 +38,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 25,),
             Container(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Online Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              child: Text("Online Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: kPrimaryColor),),
             ),
             SizedBox(height: 25,),
             SingleChildScrollView(
@@ -58,7 +56,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 25,),
             Container(
               padding: EdgeInsets.only(left: 25),
-              child: Text("Offline Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              child: Text("Offline Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: kPrimaryColor),),
             ),
             SizedBox(height: 25,),
             SingleChildScrollView(

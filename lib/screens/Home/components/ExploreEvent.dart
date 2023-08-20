@@ -8,32 +8,32 @@ class EventGrid extends StatelessWidget {
       Event(
         name: 'Event A',
         date: 'September 15, 2023',
-        image: 'https://i.pinimg.com/originals/7a/17/be/7a17be595d34c7f510d4ef46df7b92e1.jpg',
+        image: 'assets/images/event.jpg',
       ),
       Event(
         name: 'Event B',
         date: 'October 10, 2023',
-        image: 'https://i.pinimg.com/originals/7a/17/be/7a17be595d34c7f510d4ef46df7b92e1.jpg',
+        image: 'assets/images/event.jpg',
       ),
       Event(
         name: 'Event A',
         date: 'September 15, 2023',
-        image: 'https://i.pinimg.com/originals/7a/17/be/7a17be595d34c7f510d4ef46df7b92e1.jpg',
+        image: 'assets/images/event.jpg',
       ),
       Event(
         name: 'Event B',
         date: 'October 10, 2023',
-        image: 'https://i.pinimg.com/originals/7a/17/be/7a17be595d34c7f510d4ef46df7b92e1.jpg',
+        image: 'assets/images/event.jpg',
       ),
       Event(
         name: 'Event A',
         date: 'September 15, 2023',
-        image: 'https://i.pinimg.com/originals/7a/17/be/7a17be595d34c7f510d4ef46df7b92e1.jpg',
+        image: 'assets/images/event.jpg',
       ),
       Event(
         name: 'Event B',
         date: 'October 10, 2023',
-        image: 'https://i.pinimg.com/originals/7a/17/be/7a17be595d34c7f510d4ef46df7b92e1.jpg',
+        image: 'assets/images/event.jpg',
       ),
 
     ];
@@ -80,7 +80,7 @@ class EventCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-            child: Image.network(
+            child: Image.asset(
               event.image,
               height: 360,
               width: double.infinity,

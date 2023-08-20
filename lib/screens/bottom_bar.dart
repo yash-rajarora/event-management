@@ -1,5 +1,5 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
-import 'package:event/profile.dart';
+import 'package:event/profile/profile.dart';
 import 'package:event/screens/Home/Explore.dart';
 import 'package:event/screens/Home/MyTicket.dart';
 import 'package:event/screens/home.dart';
@@ -39,40 +39,43 @@ class _BottomBarState extends State<BottomBar> {
       
 
       body: Center(child: _widgetOptions[_selectedIndex],),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+      bottomNavigationBar: SizedBox(
+        height: 80,
+        child: BottomNavigationBar(
+          backgroundColor: Colors.white,
 
-        type: BottomNavigationBarType.fixed,
-        onTap: _onItemTapped,
-        currentIndex: _selectedIndex,
-        elevation: 10,
-        selectedItemColor: kPrimaryColor,
-        unselectedItemColor: Color.fromARGB(255, 162, 166, 172),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        
-        items:const [
-        BottomNavigationBarItem(
-          label: "Home",
-          icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
-          activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
-        ),
-        BottomNavigationBarItem(
-          label: "Search",
-          icon:Icon(FluentSystemIcons.ic_fluent_search_regular),
-          activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
-        ),
-        BottomNavigationBarItem(
-          label: "Explore",
-          icon: Icon(CupertinoIcons.ticket),
-          activeIcon: Icon(CupertinoIcons.ticket_fill),
-        ),
-        BottomNavigationBarItem(
-          label: "Profile",
-          icon:Icon(FluentSystemIcons.ic_fluent_person_regular),
-          activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
-        ),
-      ]),
+          type: BottomNavigationBarType.fixed,
+          onTap: _onItemTapped,
+          currentIndex: _selectedIndex,
+          elevation: 20,
+
+          selectedItemColor: kPrimaryColor,
+          unselectedItemColor: Color.fromARGB(255, 162, 166, 172),
+
+
+          items:const [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+          ),
+          BottomNavigationBarItem(
+            label: "Search",
+            icon:Icon(FluentSystemIcons.ic_fluent_search_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
+          ),
+          BottomNavigationBarItem(
+            label: "Explore",
+            icon: Icon(CupertinoIcons.ticket),
+            activeIcon: Icon(CupertinoIcons.ticket_fill),
+          ),
+          BottomNavigationBarItem(
+            label: "Profile",
+            icon:Icon(FluentSystemIcons.ic_fluent_person_regular),
+            activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+          ),
+        ]),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +16,7 @@ class OfflineEventScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
         // margin: const EdgeInsets.only(right: 1, top: 5),
         decoration: BoxDecoration(
-          color: Colors.black87,
+          color: kPrimaryLightColor,
         ),
         child: Column(
           children: [
@@ -27,13 +28,12 @@ class OfflineEventScreen extends StatelessWidget {
                   margin: const EdgeInsets.only(right: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                    // image: DecorationImage(
-                    //   fit: BoxFit.cover,
-                    // image: AssetImage(
-                    //   "assets/image/home.png"
-                    // )
-                    // )
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                    image: AssetImage(
+                      "assets/images/discover_poster.png"
+                    )
+                    )
                   ),
                 ),
                 SizedBox(width: 12,),
@@ -45,24 +45,24 @@ class OfflineEventScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: Text("JECRC Cloud Summit",
-                          style: TextStyle(fontSize: 20, color: Colors.white,),maxLines: 2,
+                          style: TextStyle(fontSize: 20, color: Colors.black,),maxLines: 2,
                         ),
                       ),
 
                       SizedBox(height: 22,),
                       Row(
                         children: [
-                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.white,size: 15,),
+                          Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.black,size: 15,),
                           SizedBox(width: 5,),
-                          Expanded(child:Text("1 - 3 January 2023", style: TextStyle(color: Colors.white , fontSize: 15),maxLines: 4,)
+                          Expanded(child:Text("1 - 3 January 2023", style: TextStyle(color: Colors.black , fontSize: 15),maxLines: 4,)
                           ),],
                       ),
                       SizedBox(height: 22,),
                       Row(
                         children: [
-                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.white,size: 15,),
+                          Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.black,size: 15,),
                           SizedBox(width: 5,),
-                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.white, fontSize: 15) ,maxLines: 4,),)
+                          Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.black, fontSize: 15) ,maxLines: 4,),)
                         ],
                       ),
                       SizedBox(height: 32,),
@@ -77,6 +77,7 @@ class OfflineEventScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   width: 500,
+                  height: 48,
                   child: ElevatedButton(
                     onPressed: () {},
                     // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),

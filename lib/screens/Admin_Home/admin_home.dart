@@ -1,8 +1,7 @@
-import 'package:event/profile.dart';
+import 'package:event/profile/profile.dart';
 import 'package:event/screens/Admin_Home/Component/create_event.dart';
 import 'package:event/screens/Home/Explore.dart';
 import 'package:event/screens/Home/MyTicket.dart';
-import 'package:event/screens/home.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
