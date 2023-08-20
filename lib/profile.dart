@@ -18,6 +18,24 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  String userRole = "";// Initialize an empty string to hold the user role
+  String userName = "";
+  String userEmail = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserRole(); // Call the function to fetch the user role when the widget is created
+  }
+
+  Future<void> fetchUserRole() async {
+    final user = FirebaseAuth.instance.currentUser;
+    final userDoc = await FirebaseFirestore.instance.collection('users').doc(user?.uid).get();
+    setState(() {
+      userEmail = userDoc.data()?['email'] ?? "";
+      userName = userDoc.data()?['firstName'] ?? "";
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +45,7 @@ class _ProfileState extends State<Profile> {
         physics: const BouncingScrollPhysics(),
         children: [
           Container(height: 35),
-          userTile(),
+          userTile(userName,userEmail),
           divider(),
           colorTiles(context),
           divider(),
@@ -42,7 +60,7 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget userTile() {
+Widget userTile( String userName, String userEmail) {
   String url =
       "https://i.pinimg.com/236x/3f/11/9f/3f119fc68701915b53cf00164fef1293.jpg"; // Replace this with a valid image URL
   return ListTile(
@@ -50,8 +68,8 @@ Widget userTile() {
       backgroundImage: NetworkImage(url),
     ),
 
-    title: const Text("supriya",style: TextStyle(fontSize: 20),),
-    subtitle: const Text("flutter"),
+    title: Text(userName,style: TextStyle(fontSize: 20),),
+    subtitle: Text(userEmail),
   );
 }
 
@@ -182,3 +200,6 @@ Widget version() {
     ),
   );
 }
+
+
+
