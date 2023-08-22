@@ -9,31 +9,23 @@ class EventScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: screenWidth*0.92,
-      height: 280,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
-      margin: const EdgeInsets.only(right: 25, top: 5),
+      width: screenWidth*0.9,
+      height: 260,
+      margin: const EdgeInsets.only(right: 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade200,
-            blurRadius: 20,
-            spreadRadius: 2,
-          )
-        ],
         image: DecorationImage(
         image: AssetImage("assets/images/discover.jpg"),
         fit: BoxFit.cover
         ),
       ),
       child: Container(
-        padding: const EdgeInsets.only(top: 190, right: 170,left: 20,bottom: 10),
+        padding: const EdgeInsets.only(top: 190, right: 140,left: 15,bottom: 20),
         child: FloatingActionButton.extended(onPressed: (){
           showModalBottomSheet(context: context,
             builder: (BuildContext context){
               return Container(
-                  height: 650.0,
+                  height: 600.0,
                   child: Container(
                     child: Column(
                       children: [
