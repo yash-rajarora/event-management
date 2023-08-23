@@ -2,6 +2,15 @@ import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:flutter/material.dart';
 import 'package:event/screens/Home/components/ExploreEvent.dart';
 
+Widget divider() {
+  return const Padding(
+    padding: EdgeInsets.all(8.0),
+    child: Divider(
+      thickness: 1.5,
+    ),
+  );
+}
+
 class ExplorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,12 +20,12 @@ class ExplorePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: 40),
             Container(
-              padding: EdgeInsets.only(left: 5),
-              child: Text("Explore", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: kPrimaryColor),),
+              padding: EdgeInsets.only(left: 15),
+              child: Text("Explore", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
-            SizedBox(height: 20),
+            divider(),
             SearchBar(),
             Expanded(
               child: EventGrid(),

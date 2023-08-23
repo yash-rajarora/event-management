@@ -7,6 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 
+Widget divider() {
+  return const Padding(
+    padding: EdgeInsets.all(8.0),
+    child: Divider(
+      thickness: 1.5,
+    ),
+  );
+}
+
 class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -29,11 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         body: ListView(
           children: [
-            SizedBox(height: 30),
+            SizedBox(height: 25),
             Container(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Discover Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              child: Text("Discover Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
+            divider(),
             SizedBox(height: 25,),
             CarouselSlider(
               items: imgList.map((item) {
@@ -82,9 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 10,),
             Container(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Online Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              child: Text("Online Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
-            SizedBox(height: 25,),
+            divider(),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               // padding: const EdgeInsets.only(left:15),
@@ -100,10 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 25,),
             Container(
-              padding: EdgeInsets.only(left: 25),
-              child: Text("Offline Events", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'inner'),),
+              padding: EdgeInsets.only(left: 15),
+              child: Text("Offline Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
-            SizedBox(height: 25,),
+            divider(),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               // padding: const EdgeInsets.only(left:20),

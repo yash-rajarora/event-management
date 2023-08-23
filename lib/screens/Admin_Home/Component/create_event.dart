@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:event/screens/Database/database_helper.dart';
-import 'package:event/screens/home.dart';
+import 'package:event/screens/Home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import'package:fluentui_icons/fluentui_icons.dart';
@@ -107,7 +107,7 @@ class _CreateEventState extends State<CreateEvent> {
                     Container(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: TextFormField(
-                        controller: _locationController,
+                        controller: _descriptionController,
                         decoration: InputDecoration(
                           hintText: 'Location',
                           prefixIcon: Padding(
@@ -127,7 +127,7 @@ class _CreateEventState extends State<CreateEvent> {
                     Container(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: TextFormField(
-                        controller: _timeController,
+                        controller: _locationController,
                         decoration: InputDecoration(
                           hintText: 'Date & Time',
                           prefixIcon: Padding(
@@ -147,7 +147,7 @@ class _CreateEventState extends State<CreateEvent> {
                     Container(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: TextFormField(
-                        controller: _descriptionController,
+                        controller: _timeController,
                         decoration: InputDecoration(
                           hintText: 'Description',
                           prefixIcon: Padding(

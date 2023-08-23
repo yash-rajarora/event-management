@@ -69,8 +69,8 @@ Widget userTile( String userName, String userEmail) {
       backgroundImage: AssetImage('assets/icons/user.png'),
     ),
 
-    title: Text(userName,style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600,color: kPrimaryColor),),
-    subtitle: Text(userEmail,style: TextStyle(color: kPrimaryColor),),
+    title: Text(userName,style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600,color: Colors.black),),
+    subtitle: Text(userEmail,style: TextStyle(color: Colors.black),),
   );
 }
 

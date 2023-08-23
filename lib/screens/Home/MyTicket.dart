@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:event/screens/Events.dart';
 import 'package:event/screens/Home/components/Registered card.dart';
 
+
+Widget divider() {
+  return const Padding(
+    padding: EdgeInsets.all(8.0),
+    child: Divider(
+      thickness: 1.5,
+    ),
+  );
+}
+
 class MyTicket extends StatefulWidget {
   const MyTicket({super.key});
 
@@ -16,12 +26,12 @@ class _MyTicketState extends State<MyTicket> {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(height: 40),
+          SizedBox(height: 25),
           Container(
             padding: EdgeInsets.only(left: 25),
-            child: Text("Registered Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: kPrimaryColor),),
+            child: Text("Registered Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
           ),
-          SizedBox(height: 40),
+          divider(),
           Padding(
             padding: EdgeInsets.all(16),
             child: Column(
