@@ -96,3 +96,25 @@ class OfflineEventScreen extends StatelessWidget {
     );
   }
 }
+
+class OfflineEvent extends StatelessWidget {
+  const OfflineEvent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+          padding: const EdgeInsets.all(0),
+          child: ListView(
+            children: [
+              OfflineEventScreen(),
+              OfflineEventScreen(),
+              OfflineEventScreen(),
+              OfflineEventScreen(),
+              OfflineEventScreen(),
+            ],
+          )
+      ),
+    );
+  }
+}

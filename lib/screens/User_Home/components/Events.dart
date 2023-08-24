@@ -11,16 +11,16 @@ class EventScreen extends StatelessWidget {
     return Container(
       width: screenWidth*0.9,
       height: 260,
-      margin: const EdgeInsets.only(right: 4),
+      margin: const EdgeInsets.only(right: 2),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
         image: AssetImage("assets/images/discover.jpg"),
         fit: BoxFit.cover
         ),
       ),
       child: Container(
-        padding: const EdgeInsets.only(top: 190, right: 140,left: 15,bottom: 20),
+        padding: const EdgeInsets.only(top: 200, right: 170,left: 20,bottom: 20),
         child: FloatingActionButton.extended(onPressed: (){
           showModalBottomSheet(context: context,
             builder: (BuildContext context){
@@ -104,7 +104,7 @@ class EventScreen extends StatelessWidget {
             ),
             isScrollControlled: true,
           );
-        }, label: Text('Learn More' , style: TextStyle(color: Colors.black),), backgroundColor: Colors.white, ),// Foreground widget here,
+        }, label: Text('Learn More' , style: TextStyle(color: Colors.black,fontSize: 12),), backgroundColor: Colors.white, ),// Foreground widget here,
       ),
     );
   }

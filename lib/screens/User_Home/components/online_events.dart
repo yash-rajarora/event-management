@@ -96,3 +96,21 @@ class OnlineEventScreen extends StatelessWidget {
     );
   }
 }
+class OnlineEvent extends StatelessWidget {
+  const OnlineEvent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView(
+        children: [
+          OnlineEventScreen(),
+          OnlineEventScreen(),
+          OnlineEventScreen(),
+          OnlineEventScreen(),
+          OnlineEventScreen(),
+        ],
+      ),
+    );
+  }
+}
