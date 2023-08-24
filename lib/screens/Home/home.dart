@@ -95,18 +95,13 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("Online Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
             divider(),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              // padding: const EdgeInsets.only(left:15),
-              child: Row(
-                children: [
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                ],
-              ),
+            ListView.builder(
+              shrinkWrap: true, // Allow the list to take the height it needs
+              physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView
+              itemCount: 5, // Replace with the actual number of online events
+              itemBuilder: (context, index) {
+                return OnlineEventScreen();
+              },
             ),
             SizedBox(height: 25,),
             Container(
@@ -114,18 +109,13 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("Offline Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
             divider(),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              // padding: const EdgeInsets.only(left:20),
-              child: Row(
-                children: [
-                  OfflineEventScreen(),
-                  OfflineEventScreen(),
-                  OfflineEventScreen(),
-                  OfflineEventScreen(),
-                  OfflineEventScreen(),
-                ],
-              ),
+            ListView.builder(
+              shrinkWrap: true, // Allow the list to take the height it needs
+              physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView
+              itemCount: 5, // Replace with the actual number of offline events
+              itemBuilder: (context, index) {
+                return OfflineEventScreen();
+              },
             ),
             SizedBox(height: 25,),
           ],

@@ -52,6 +52,17 @@ class SQLHelper {
     return db.query('users', where: "id = ?", whereArgs: [id], limit: 1);
   }
 
+  // Delete an event by ID
+  static Future<void> deleteEvent(int id) async {
+    final db = await SQLHelper.db();
+    try {
+      await db.delete('users', where: 'id = ?', whereArgs: [id]);
+    } catch (err) {
+      debugPrint('Something went wrong when deleting an event: $err');
+    }
+  }
+
+
   // Update an item by id
   static Future<int> updateItem(
       int id, String title,String location, String time, String? description) async {

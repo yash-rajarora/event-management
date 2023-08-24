@@ -56,7 +56,11 @@ class _CreateEventState extends State<CreateEvent> {
     print("Location  : ${_locationController.text}");
     print("Time  : ${_timeController.text}");
   }
-
+  Future<void> _deleteEvent(int id) async{
+    await SQLHelper.deleteEvent(id);
+    _refreshJournals();
+    Navigator.pop(context);
+  }
 
   void _showForm(int? id) async {
     if (id != null) {
@@ -71,8 +75,8 @@ class _CreateEventState extends State<CreateEvent> {
         context: context,
         elevation: 5,
         isScrollControlled: true,
-        builder: (_) =>
-            Container(
+        builder: (_) => SingleChildScrollView(
+            child: Container(
               height: 800,
               child:ListView(
                   children: [
@@ -198,6 +202,7 @@ class _CreateEventState extends State<CreateEvent> {
                           if (id == null) {
                             await _addItem();
                           }
+                          Navigator.pushNamed(context, 'admin_home');
                         },
                           label: Text('Create' , style: TextStyle(color: Colors.white,fontSize: 20),),backgroundColor: kPrimaryColor,)
                     ),
@@ -205,6 +210,7 @@ class _CreateEventState extends State<CreateEvent> {
                   ]
               ),
             ),
+        ),
     );
   }
 
@@ -225,12 +231,11 @@ class _CreateEventState extends State<CreateEvent> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
               margin: const EdgeInsets.only(right: 15, top: 5, left: 15),
               decoration: BoxDecoration(
-                color: Colors.black87,
                 borderRadius: BorderRadius.circular(40),
-                // image: DecorationImage(
-                // image: AssetImage("assets/images/cat2.jpg"),
-                // fit: BoxFit.cover
-                // ),
+                image: DecorationImage(
+                image: AssetImage("assets/images/discover_main.png"),
+                fit: BoxFit.cover
+                ),
               ),
               child: Container(
                 padding: const EdgeInsets.only(top: 170, right: 170,left: 20,bottom: 10),
@@ -245,12 +250,11 @@ class _CreateEventState extends State<CreateEvent> {
                                 Container(
                                   height: 250,
                                   decoration: BoxDecoration(
-                                    color: Colors.black87,
                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) ),
-                                    // image: DecorationImage(
-                                    // image: AssetImage("assets/images/cat2.jpg"),
-                                    // fit: BoxFit.cover
-                                    // ),
+                                    image: DecorationImage(
+                                    image: AssetImage("assets/images/discover_main.png"),
+                                    fit: BoxFit.cover
+                                    ),
                                   ),
                                 ),
                                 SizedBox(height: 30,),
@@ -259,6 +263,10 @@ class _CreateEventState extends State<CreateEvent> {
                                       children: [
                                         Text(_journals[index]['title'],
                                           style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
+                                        ),
+                                        IconButton(
+                                            icon: Icon(Icons.delete,color: Colors.red ),
+                                            onPressed: () => _deleteEvent(_journals[index]['id']),
                                         ),
                                         SizedBox(height: 15,),
                                         Row(
