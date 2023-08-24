@@ -1,6 +1,6 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:flutter/material.dart';
-import 'package:event/screens/Home/components/ExploreEvent.dart';
+import 'components/ExploreEvent.dart';
 
 Widget divider() {
   return const Padding(

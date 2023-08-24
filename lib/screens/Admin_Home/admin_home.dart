@@ -1,10 +1,10 @@
-import 'package:event/profile/profile.dart';
 import 'package:event/screens/Admin_Home/Component/create_event.dart';
-import 'package:event/screens/Home/Explore.dart';
-import 'package:event/screens/Home/MyTicket.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../user_Home/profile.dart';
+import '../user_Home/Explore.dart';
+import '../user_Home/MyTicket.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);

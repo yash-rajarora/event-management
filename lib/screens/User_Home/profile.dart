@@ -1,15 +1,15 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
-import 'package:event/profile/components/referral.dart';
-import 'package:event/profile/components/tnc.dart';
-import 'package:event/screens/Home/MyTicket.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:event/profile/components/notification.dart';
-import 'package:event/profile/components/Faqs.dart';
-import 'package:event/profile/components/help.dart';
-import 'package:event/profile/components/privacy.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'MyTicket.dart';
+import '../profile/components/Faqs.dart';
+import '../profile/components/help.dart';
+import '../profile/components/notification.dart';
+import '../profile/components/privacy.dart';
+import '../profile/components/referral.dart';
+import '../profile/components/tnc.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

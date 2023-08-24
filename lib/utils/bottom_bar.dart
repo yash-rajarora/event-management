@@ -1,11 +1,11 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
-import 'package:event/profile/profile.dart';
-import 'package:event/screens/Home/Explore.dart';
-import 'package:event/screens/Home/MyTicket.dart';
-import 'package:event/screens/Home/home.dart';
+import 'package:event/screens/user_Home/profile.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../screens/user_Home/Explore.dart';
+import '../screens/user_Home/MyTicket.dart';
+import '../screens/user_Home/home.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);

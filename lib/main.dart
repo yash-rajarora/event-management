@@ -5,7 +5,7 @@ import 'package:event/screens/Welcome/welcome_screen.dart';
 import 'package:event/screens/forgot/forgot_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:event/screens/bottom_bar.dart';
+import 'package:event/utils/bottom_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:event/screens/Admin_Home/admin_home.dart';

@@ -1,10 +1,10 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
-import 'package:event/screens/Events.dart';
-import 'package:event/screens/offline_event.dart';
-import 'package:event/screens/online_events.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'components/Events.dart';
+import 'components/offline_event.dart';
+import 'components/online_events.dart';
 
 
 Widget divider() {

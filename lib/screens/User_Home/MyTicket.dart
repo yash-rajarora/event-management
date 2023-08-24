@@ -1,7 +1,6 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:flutter/material.dart';
-import 'package:event/screens/Events.dart';
-import 'package:event/screens/Home/components/Registered card.dart';
+import 'components/Registered card.dart';
 
 
 Widget divider() {

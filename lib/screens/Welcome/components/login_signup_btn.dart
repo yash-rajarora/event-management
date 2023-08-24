@@ -1,4 +1,4 @@
-import 'package:event/screens/bottom_bar.dart';
+import 'package:event/utils/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
