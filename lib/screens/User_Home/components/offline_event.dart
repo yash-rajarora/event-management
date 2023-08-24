@@ -1,4 +1,5 @@
 import 'package:event/components/already_have_an_account_acheck.dart';
+import 'package:event/screens/User_Home/components/getticketsform.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -79,7 +80,12 @@ class OfflineEventScreen extends StatelessWidget {
                   width: 500,
                   height: 48,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => GetTickets()),
+                      );
+                    },
                     // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
                     style: ElevatedButton.styleFrom(
                         elevation: 12.0,

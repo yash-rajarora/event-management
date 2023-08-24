@@ -3,6 +3,8 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'getticketsform.dart';
+
 
 class OnlineEventScreen extends StatelessWidget {
   const OnlineEventScreen({super.key});
@@ -79,7 +81,10 @@ class OnlineEventScreen extends StatelessWidget {
                   width: 500,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GetTickets()),
+                  );},
                   // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
                   style: ElevatedButton.styleFrom(
                       elevation: 12.0,
