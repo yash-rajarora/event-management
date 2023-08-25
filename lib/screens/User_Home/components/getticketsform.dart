@@ -24,8 +24,7 @@ class _GetTicketsState extends State<GetTickets> {
     final database = openDatabase(
       join(databasePath, 'user_database.db'),
       onCreate: (db, version) {
-        return db.execute(
-            '''
+        return db.execute('''
           CREATE TABLE users(
             id INTEGER PRIMARY KEY,
             name TEXT,
@@ -34,8 +33,7 @@ class _GetTicketsState extends State<GetTickets> {
             year TEXT,
             branch TEXT
           )
-          '''
-        );
+          ''');
       },
       version: 1,
     );
@@ -60,100 +58,124 @@ class _GetTicketsState extends State<GetTickets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Get ticket'),
-      ),
-      body: SingleChildScrollView(
+        body: SingleChildScrollView(
+      child: Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
               children: [
+                SizedBox(height: 100),
+            Text("Enter your data", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: kPrimaryColor),),
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Name'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter a name';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _name = value!;
-                  },
+                  decoration: InputDecoration(
+                    hintText: 'Name',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.person),
+                    ),
+                    fillColor: kPrimaryLightColor,
+                    // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Email'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter an email';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _email = value!;
-                  },
+                  decoration: InputDecoration(
+                    hintText: 'Email',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.email),
+                    ),
+                    fillColor: kPrimaryLightColor,
+                    // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Phone number',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.phone),
+                    ),
+                    fillColor: kPrimaryLightColor,
+                    // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Phone'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter a phone number';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _phone = value!;
-                  },
+                  decoration: InputDecoration(
+                    hintText: 'Year',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.book),
+                    ),
+                    fillColor: kPrimaryLightColor,
+                    // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Year'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter a year';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _year = value!;
-                  },
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'Branch'),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter a branch';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _branch = value!;
-                  },
+                  decoration: InputDecoration(
+                    hintText: 'Branch',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.computer),
+                    ),
+                    fillColor: kPrimaryLightColor,
+                    // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState?.save();
-                  _saveData(); // Wait for data saving to complete
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BottomBar()), // Replace with your desired screen
-                  );
-                }
-              },
-              child: Text('Save Data'),
-            ),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState?.save();
+                      _saveData(); // Wait for data saving to complete
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                BottomBar()), // Replace with your desired screen
+                      );
+                    }
+                  },
+                  child: Text('Save'),
+                ),
               ],
             ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
