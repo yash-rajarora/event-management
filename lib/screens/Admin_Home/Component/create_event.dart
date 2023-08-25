@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter_launcher_icons/constants.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
@@ -61,6 +62,7 @@ class _CreateEventState extends State<CreateEvent> {
     Navigator.pop(context);
   }
 
+
   void _showForm(int? id) async {
     if (id != null) {
       final existingJournal =
@@ -77,7 +79,7 @@ class _CreateEventState extends State<CreateEvent> {
         builder: (_) => SingleChildScrollView(
             child: Container(
               height: 800,
-              child:ListView(
+              child:Column(
                   children: [
                     SizedBox(height: 40),
                     Container(
@@ -242,7 +244,7 @@ class _CreateEventState extends State<CreateEvent> {
                   showModalBottomSheet(context: context,
                     builder: (BuildContext context){
                       return Container(
-                          height: 600.0,
+                          height: 700.0,
                           child: Container(
                             child: Column(
                               children: [
