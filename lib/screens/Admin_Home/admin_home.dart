@@ -1,5 +1,6 @@
 import 'package:event/screens/Admin_Home/Component/create_event.dart';
 import 'package:event/screens/Admin_Home/Component/offline_page.dart';
+import 'package:event/screens/Admin_Home/Component/online_page.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,8 @@ class _AdminHomeState extends State<AdminHome> {
   int _selectedIndex=0;
   static final List<Widget>_widgetOptions = <Widget>[
     CreateEvent(),
+    OnlinePage(),
     OfflinePage(),
-    MyTicket(),
     Profile()
   ];
 
@@ -65,8 +66,9 @@ class _AdminHomeState extends State<AdminHome> {
               ),
               BottomNavigationBarItem(
                 label: "Offline",
-                icon: Icon(CupertinoIcons.ticket),
-                activeIcon: Icon(CupertinoIcons.ticket_fill),
+                icon: Icon(FluentSystemIcons.ic_fluent_cloud_offline_regular),
+                // icon: Icon(CupertinoIcons.ticket),
+                activeIcon: Icon(FluentSystemIcons.ic_fluent_cloud_offline_filled),
               ),
               BottomNavigationBarItem(
                 label: "Profile",

@@ -14,6 +14,7 @@ class _OfflinePageState extends State<OfflinePage> {
 
   bool _isLoading = true;
 
+
   void _refreshJournals() async {
     final data = await SQLHelper.getItems();
     setState(() {
@@ -21,6 +22,14 @@ class _OfflinePageState extends State<OfflinePage> {
       _isLoading = false;
     });
   }
+  
+  @override
+  void initState() {
+    super.initState();
+    _refreshJournals();
+    print(".. number of items ${_journals.length}");
+  }
+
   @override
   Future<void> _deleteEvent(int id) async{
     await SQLHelper.deleteEvent(id);
