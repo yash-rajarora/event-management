@@ -100,15 +100,14 @@ class _HomeScreenState extends State<HomeScreen> {
               child: AppBar(
                 backgroundColor: Colors.white,
                 bottom: TabBar(
-                  labelPadding: EdgeInsets.symmetric(vertical: 10.0),
                   unselectedLabelColor: Colors.grey,
                   indicatorColor: Colors.black,
                   tabs: [
                     Tab(
-                        child: Text("Online",style: TextStyle(fontSize: 26, color: Colors.black,),)
+                        child: Text("Online",style: TextStyle(fontSize: 22, color: Colors.black,),)
                     ),
                     Tab(
-                        child: Text("Offline",style: TextStyle(fontSize: 26,color: Colors.black),)
+                        child: Text("Offline",style: TextStyle(fontSize: 22,color: Colors.black),)
                     ),
                   ],
                 ),
