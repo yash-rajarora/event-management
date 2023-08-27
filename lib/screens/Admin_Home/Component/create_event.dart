@@ -1,14 +1,53 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:event/constants.dart';
 import 'package:event/screens/Database/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import'package:fluentui_icons/fluentui_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_launcher_icons/constants.dart';
 import 'package:image_picker/image_picker.dart';
 
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.7);
+
+class AddEventImage extends StatelessWidget {
+  const AddEventImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: defaultPadding * 2),
+        Text(
+
+          "ADD EVENT",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: kPrimaryColor,
+
+          ),
+        ),
+        SizedBox(height: defaultPadding),
+        Row(
+          children: [
+            const Spacer(),
+            Expanded(
+              flex: 8,
+              child: SvgPicture.asset("assets/icons/add_event.svg"),
+            ),
+            const Spacer(),
+          ],
+        ),
+        SizedBox(height: defaultPadding * 2),
+      ],
+    );
+  }
+}
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({super.key});
@@ -218,123 +257,32 @@ class _CreateEventState extends State<CreateEvent> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: _isLoading
-          ? const Center(
-        child: CircularProgressIndicator(),
-      )
-          :ListView.builder(
-        itemCount: _journals.length,
-        itemBuilder: (context,index) =>
-            Container(
-              width: screenWidth*0.92,
-              height: 250,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
-              margin: const EdgeInsets.only(right: 15, top: 5, left: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                image: DecorationImage(
-                image: AssetImage("assets/images/discover_main.png"),
-                fit: BoxFit.cover
+
+    return
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const AddEventImage(),
+          Row(
+          children: [
+            Spacer(),
+            Expanded(
+              flex: 8,
+              child: Hero(
+                tag: "login_btn",
+                child: ElevatedButton(
+                  onPressed: () => _showForm(null),
+                  child: Text(
+                    "add event".toUpperCase(),
+                  ),
                 ),
               ),
-              child: Container(
-                padding: const EdgeInsets.only(top: 170, right: 170,left: 20,bottom: 10),
-                child: FloatingActionButton.extended(onPressed: (){
-                  showModalBottomSheet(context: context,
-                    builder: (BuildContext context){
-                      return Container(
-                          height: 700.0,
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 250,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) ),
-                                    image: DecorationImage(
-                                    image: AssetImage("assets/images/discover_main.png"),
-                                    fit: BoxFit.cover
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 30,),
-                                Container(
-                                  child: Column(
-                                      children: [
-                                        Text(_journals[index]['title'],
-                                          style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
-                                        ),
-                                        IconButton(
-                                            icon: Icon(Icons.delete,color: Colors.red ),
-                                            onPressed: () => _deleteEvent(_journals[index]['id']),
-                                        ),
-                                        SizedBox(height: 15,),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 20,),
-                                            Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.black,size: 20,),
-                                            SizedBox(width: 17,),
-                                            Text(_journals[index]['time'], style: TextStyle(color: Colors.black),)
-                                          ],
-                                        ),
-                                        SizedBox(height: 15,),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 20,),
-                                            Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.black,size: 20,),
-                                            SizedBox(width: 17,),
-                                            Expanded(child: Text(_journals[index]['location'], style: TextStyle(color: Colors.black) ,maxLines: 2,),)
-                                          ],
-                                        ),
-                                        SizedBox(height: 15,),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 20,),
-                                            Icon(FluentSystemIcons.ic_fluent_globe_regular, color: Colors.black,size: 20,),
-                                            SizedBox(width: 17,),
-                                            Expanded(child: Text("Online", style: TextStyle(color: Colors.black) ,maxLines: 2,),)
-                                          ],
-                                        ),
-                                        SizedBox(height: 15,),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 20,),
-                                            Text("Description", style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),),
-                                          ],
-                                        ),
-                                        SizedBox(height: 10,),
-                                        Container(
-                                          padding: const EdgeInsets.only(left: 20, right: 20),
-                                          child: Row(
-                                            children: [
-                                              Expanded(child: Text(_journals[index]['description'], style: TextStyle(color: Colors.black),maxLines: 20,))
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(height: 15,),
-                                        FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),
-                                      ]
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                      );
-                    },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) )
-                    ),
-                    isScrollControlled: true,
-                  );
-                }, label: Text('Learn More' , style: TextStyle(color: Colors.black),), backgroundColor: Colors.white, ),// Foreground widget here,
-              ),
             ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () => _showForm(null),
-      ),
-    );
+            Spacer(),
+          ],
+    ),
+        ],
+      );
   }
+
 }

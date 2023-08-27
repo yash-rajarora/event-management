@@ -9,7 +9,7 @@ class EventScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: screenWidth*0.9,
+      width: 500,
       height: 260,
       margin: const EdgeInsets.only(right: 2),
       decoration: BoxDecoration(
@@ -25,7 +25,7 @@ class EventScreen extends StatelessWidget {
           showModalBottomSheet(context: context,
             builder: (BuildContext context){
               return Container(
-                  height: 600.0,
+                  height: 700.0,
                   child: Container(
                     child: Column(
                       children: [

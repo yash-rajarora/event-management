@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-        body: Column(
+        body: ListView(
           children: [
             SizedBox(height: 25),
             Container(
@@ -93,68 +93,68 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               }).toList(),
             ),
-
+            //
+            // Container(
+            //   // padding: EdgeInsets.only(top:20),
+            //   height: 100,
+            //   child: AppBar(
+            //     backgroundColor: Colors.white,
+            //     bottom: TabBar(
+            //       unselectedLabelColor: Colors.grey,
+            //       indicatorColor: Colors.black,
+            //       tabs: [
+            //         Tab(
+            //             child: Text("Online",style: TextStyle(fontSize: 22, color: Colors.black,),)
+            //         ),
+            //         Tab(
+            //             child: Text("Offline",style: TextStyle(fontSize: 22,color: Colors.black),)
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            //
+            // // create widgets for each tab bar here
+            // Expanded(
+            //   child: TabBarView(
+            //     children: [
+            //       // first tab bar view widget
+            //       OnlineEvent(),
+            //
+            //       // second tab bar viiew widget
+            //       OfflineEvent(),
+            //     ],
+            //   ),
+            // ),
+            SizedBox(height: 10,),
             Container(
-              // padding: EdgeInsets.only(top:20),
-              height: 100,
-              child: AppBar(
-                backgroundColor: Colors.white,
-                bottom: TabBar(
-                  unselectedLabelColor: Colors.grey,
-                  indicatorColor: Colors.black,
-                  tabs: [
-                    Tab(
-                        child: Text("Online",style: TextStyle(fontSize: 22, color: Colors.black,),)
-                    ),
-                    Tab(
-                        child: Text("Offline",style: TextStyle(fontSize: 22,color: Colors.black),)
-                    ),
-                  ],
-                ),
-              ),
+              padding: EdgeInsets.only(left: 15),
+              child: Text("Online Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
-
-            // create widgets for each tab bar here
-            Expanded(
-              child: TabBarView(
-                children: [
-                  // first tab bar view widget
-                  OnlineEvent(),
-
-                  // second tab bar viiew widget
-                  OfflineEvent(),
-                ],
-              ),
+            divider(),
+            ListView.builder(
+              shrinkWrap: true, // Allow the list to take the height it needs
+              physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView
+              itemCount: 5, // Replace with the actual number of online events
+              itemBuilder: (context, index) {
+                return OnlineEventScreen();
+              },
             ),
-            // SizedBox(height: 10,),
-            // Container(
-            //   padding: EdgeInsets.only(left: 15),
-            //   child: Text("Online Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
-            // ),
-            // divider(),
-            // ListView.builder(
-            //   shrinkWrap: true, // Allow the list to take the height it needs
-            //   physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView
-            //   itemCount: 5, // Replace with the actual number of online events
-            //   itemBuilder: (context, index) {
-            //     return OnlineEventScreen();
-            //   },
-            // ),
-            // SizedBox(height: 25,),
-            // Container(
-            //   padding: EdgeInsets.only(left: 15),
-            //   child: Text("Offline Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
-            // ),
-            // divider(),
-            // ListView.builder(
-            //   shrinkWrap: true, // Allow the list to take the height it needs
-            //   physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView
-            //   itemCount: 5, // Replace with the actual number of offline events
-            //   itemBuilder: (context, index) {
-            //     return OfflineEventScreen();
-            //   },
-            // ),
-            // SizedBox(height: 25,),
+            SizedBox(height: 25,),
+            Container(
+              padding: EdgeInsets.only(left: 15),
+              child: Text("Offline Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
+            ),
+            divider(),
+            ListView.builder(
+              shrinkWrap: true, // Allow the list to take the height it needs
+              physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView
+              itemCount: 5, // Replace with the actual number of offline events
+              itemBuilder: (context, index) {
+                return OfflineEventScreen();
+              },
+            ),
+            SizedBox(height: 25,),
           ],
         )
 
