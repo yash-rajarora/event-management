@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:event/constants.dart';
 import 'package:event/screens/Database/database_helper.dart';
@@ -57,6 +59,26 @@ class CreateEvent extends StatefulWidget {
 }
 
 class _CreateEventState extends State<CreateEvent> {
+  String _base64Image = "";
+  ImageProvider? _uploadedImage;  // Add this line
+  bool _hasUploaded = false;
+  Future<void> _uploadImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);  // Use pickImage instead of getImage
+
+    if (pickedFile != null) {
+      final imageBytes = await pickedFile.readAsBytes();
+      final base64Image = base64Encode(imageBytes);
+
+      setState(() {
+        _base64Image = base64Image;
+        _uploadedImage = Image.memory(imageBytes).image;
+        _hasUploaded = true;
+      });
+    }
+  }
+
+
   List<Map<String, dynamic>> _journals = [];
 
   bool _isLoading = true;
@@ -221,15 +243,40 @@ class _CreateEventState extends State<CreateEvent> {
                           height:250, //height of inner container
                           width: double.infinity, //width to 100% match to parent container.
                           color:kPrimaryLightColor ,
-                          child: Column(
-                            children: [
-                              SizedBox(height: 20),SizedBox(height: 20),
-                              Text("Upload Image of Event", style: TextStyle(fontSize: 20, color: kPrimaryColor),),
-                              SizedBox(height: 20),
-                              Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50,),
-                              SizedBox(height: 20),
-                              FloatingActionButton.extended(onPressed: (){}, label: Text('Upload Image' , style: TextStyle(color: Colors.white),),backgroundColor: kPrimaryColor,)
-                            ],
+                          child: Container(
+                            height: 250,
+                            width: double.infinity,
+                            color: kPrimaryLightColor,
+                            child: Column(
+                              children: [
+                                SizedBox(height: 20),
+                                if (_hasUploaded && _uploadedImage != null)  // Display uploaded image
+                                  Expanded(
+                                    child: FittedBox(
+                                      fit: BoxFit.contain,  // Fit the image within the available space
+                                      child: Image(image: _uploadedImage!),
+                                    ),
+                                  ),
+                                if (!_hasUploaded || _uploadedImage == null)  // Show only when no image is uploaded
+                                  Column(
+                                    children: [
+                                      Text(
+                                        "Upload Image of Event",
+                                        style: TextStyle(fontSize: 20, color: kPrimaryColor),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50),
+                                    ],
+                                  ),
+                                SizedBox(height: 20),
+                                if (!_hasUploaded || _uploadedImage == null)  // Show only when no image is uploaded
+                                  FloatingActionButton.extended(
+                                    onPressed: _uploadImage,
+                                    label: Text('Upload Image', style: TextStyle(color: Colors.white)),
+                                    backgroundColor: kPrimaryColor,
+                                  ),
+                              ],
+                            ),
                           ),
                           //background color of inner container
                         ),
@@ -238,13 +285,19 @@ class _CreateEventState extends State<CreateEvent> {
                     SizedBox(height: 30,),
                     Container(
                         padding: const EdgeInsets.only(left: 30, right: 30),
-                        child:FloatingActionButton.extended(onPressed: ()async {
-                          if (id == null) {
-                            await _addItem();
-                          }
-                          Navigator.pushNamed(context, 'admin_home');
-                        },
-                          label: Text('Create' , style: TextStyle(color: Colors.white,fontSize: 20),),backgroundColor: kPrimaryColor,)
+                        child:FloatingActionButton.extended(
+                          onPressed: () async {
+                            if (id == null) {
+                              await _addItem();
+                            }
+                            Navigator.pushNamed(context, 'admin_home');
+                          },
+                          label: Text(
+                            'Create',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          backgroundColor: kPrimaryColor,
+                        ),
                     ),
                     SizedBox(height: 20,),
                   ]
@@ -286,3 +339,16 @@ class _CreateEventState extends State<CreateEvent> {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
