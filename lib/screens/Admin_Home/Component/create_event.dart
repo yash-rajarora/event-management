@@ -276,7 +276,7 @@ class _CreateEventState extends State<CreateEvent> {
                             'Location': _locationController.text,
                             'Date & Time': _timeController.text,
                             'Description': _descriptionController.text,
-                            'mode': _modeController.text,
+                            'mode': _modeController.text.toUpperCase(),
                             'Image URL': imageUrl, // Save the image URL
                           }).then((_) {
                             Navigator.pushNamed(context, 'admin_home');
