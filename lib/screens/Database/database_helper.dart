@@ -13,6 +13,7 @@ class SQLHelper {
       )
       """);
   }
+
 // id: the id of a item
 // title, description: name and description of your activity
 // created_at: the time that the item was created. It will be automatically handled by SQLite
@@ -28,10 +29,16 @@ class SQLHelper {
   }
 
   // Create new item (journal)
-  static Future<int> createItem(String title,String location, String time, String? descrption) async {
+  static Future<int> createItem(String title, String location, String time,
+      String? descrption) async {
     final db = await SQLHelper.db();
 
-    final data = {'title': title,'location': location,'time': time, 'description': descrption};
+    final data = {
+      'title': title,
+      'location': location,
+      'time': time,
+      'description': descrption
+    };
     final id = await db.insert(
         'users',
         data,
@@ -64,8 +71,8 @@ class SQLHelper {
 
 
   // Update an item by id
-  static Future<int> updateItem(
-      int id, String title,String location, String time, String? description) async {
+  static Future<int> updateItem(int id, String title, String location,
+      String time, String? description) async {
     final db = await SQLHelper.db();
 
     final data = {
@@ -80,7 +87,22 @@ class SQLHelper {
     await db.update('users', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
+  
 
+  static Future<List<String>> getTitles() async {
+    final db = await SQLHelper.db();
+    final result = await db.query('users', columns: ['title']);
+    return result.map((item) => item['title'] as String).toList();
+  }
+
+// Search for titles containing a given term
+  static Future<List<String>> searchTitles(String searchTerm) async {
+    final db = await SQLHelper.db();
+    final result = await db.query('users', columns: ['title'], where: 'title LIKE ?', whereArgs: ['%$searchTerm%']);
+    return result.map((item) => item['title'] as String).toList();
+  }
+
+}
 // Delete
 //   static Future<void> deleteItem(int id) async {
 //     final db = await SQLHelper.db();
@@ -90,4 +112,3 @@ class SQLHelper {
 //       debugPrint("Something went wrong when deleting an item: $err");
 //     }
 //   }
-}

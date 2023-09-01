@@ -14,8 +14,8 @@ class OnlineEventScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth,
-      height: 340,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+      height: 360,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
       // margin: const EdgeInsets.only(right: 1, top: 5),
       decoration: BoxDecoration(
           color: kPrimaryLightColor,
@@ -74,7 +74,6 @@ class OnlineEventScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8,),
           Column(
             children: [
               SizedBox(
