@@ -39,8 +39,8 @@ class _OnlinePageState extends State<OnlinePage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               image: DecorationImage(
-                  image: AssetImage("assets/images/discover_main.png"),
-                  fit: BoxFit.cover
+                image: NetworkImage(data['Image URL']),
+                fit: BoxFit.cover,
               ),
             ),
             child: Container(
@@ -61,9 +61,8 @@ class _OnlinePageState extends State<OnlinePage> {
                                       topLeft: Radius.circular(40.0),
                                       topRight: Radius.circular(40.0)),
                                   image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/images/discover_main.png"),
-                                      fit: BoxFit.cover
+                                    image: NetworkImage(data['Image URL']),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
