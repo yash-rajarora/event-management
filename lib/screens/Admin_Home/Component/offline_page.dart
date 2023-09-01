@@ -14,6 +14,29 @@ class OfflinePage extends StatefulWidget {
 class _OfflinePageState extends State<OfflinePage> {
 
   Widget build(BuildContext context) {
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    Future<void> deleteDocumentByEventName(String eventName) async {
+      // Query Firestore to find the document with the specified Event Name
+      QuerySnapshot querySnapshot = await _firestore
+          .collection('events')
+          .where('Event Name', isEqualTo: eventName)
+          .get();
+
+      // Check if there's any document matching the query
+      if (querySnapshot.docs.isNotEmpty) {
+        // Get the document ID of the first matching document
+        // Note: This assumes there's only one document with the specified Event Name.
+        // If there could be multiple, you might need to loop through the documents and decide which one(s) to delete.
+        String docId = querySnapshot.docs.first.id;
+
+        // Delete the document from Firestore
+        await _firestore.collection('events').doc(docId).delete();
+        print('Document with Event Name: $eventName has been deleted.');
+      } else {
+        print('No document found with Event Name: $eventName.');
+      }
+    }
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: StreamBuilder(
@@ -80,6 +103,68 @@ class _OfflinePageState extends State<OfflinePage> {
                                                 // icon: Icon(Icons.delete,color: Colors.red ),
                                                 // // onPressed: () => _deleteEvent(_journals[index]['id']),
                                                 // ),
+                                                IconButton(
+                                                  icon: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  ),
+                                                  onPressed: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext context) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                            'Delete Event',
+                                                            style: TextStyle(
+                                                              fontWeight: FontWeight.bold,
+                                                              fontSize: 20,
+                                                              color: Colors.red,
+                                                            ),
+                                                          ),
+                                                          content: Text(
+                                                            'Are you sure you want to delete this event?',
+                                                            style: TextStyle(
+                                                              fontSize: 16,
+                                                            ),
+                                                          ),
+                                                          actions: [
+                                                            TextButton(
+                                                              child: Text(
+                                                                'Cancel',
+                                                                style: TextStyle(
+                                                                  fontSize: 16,
+                                                                  color: Colors.grey,
+                                                                ),
+                                                              ),
+                                                              onPressed: () {
+                                                                Navigator.of(context).pop();
+                                                              },
+                                                            ),
+                                                            TextButton(
+                                                              child: Text(
+                                                                'Delete',
+                                                                style: TextStyle(
+                                                                  fontSize: 16,
+                                                                  color: Colors.red,
+                                                                ),
+                                                              ),
+                                                              onPressed: () {
+                                                                deleteDocumentByEventName(data['Event Name']);
+                                                                Navigator.of(context).pop();
+                                                              },
+                                                            ),
+                                                          ],
+                                                          backgroundColor: Colors.white, // Change the background color
+                                                          elevation: 5.0, // Add elevation
+                                                          shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(10.0), // Customize border radius
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+
                                                 SizedBox(height: 15,),
                                                 Row(
                                                   children: [

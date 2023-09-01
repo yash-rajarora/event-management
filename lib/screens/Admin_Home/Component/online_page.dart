@@ -15,6 +15,30 @@ class _OnlinePageState extends State<OnlinePage> {
   
 
   Widget build(BuildContext context) {
+
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    Future<void> deleteDocumentByEventName(String eventName) async {
+      // Query Firestore to find the document with the specified Event Name
+      QuerySnapshot querySnapshot = await _firestore
+          .collection('events')
+          .where('Event Name', isEqualTo: eventName)
+          .get();
+
+      // Check if there's any document matching the query
+      if (querySnapshot.docs.isNotEmpty) {
+        // Get the document ID of the first matching document
+        // Note: This assumes there's only one document with the specified Event Name.
+        // If there could be multiple, you might need to loop through the documents and decide which one(s) to delete.
+        String docId = querySnapshot.docs.first.id;
+
+        // Delete the document from Firestore
+        await _firestore.collection('events').doc(docId).delete();
+        print('Document with Event Name: $eventName has been deleted.');
+      } else {
+        print('No document found with Event Name: $eventName.');
+      }
+    }
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: StreamBuilder(
@@ -127,7 +151,7 @@ class _OnlinePageState extends State<OnlinePage> {
                                                               ),
                                                             ),
                                                             onPressed: () {
-                                                              // delete funtion
+                                                              deleteDocumentByEventName(data['Event Name']);
                                                               Navigator.of(context).pop();
                                                             },
                                                           ),

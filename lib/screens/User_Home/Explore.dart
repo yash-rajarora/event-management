@@ -59,7 +59,6 @@ import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'components/ExploreEvent.dart';
-import 'package:event/screens/Database/database_helper.dart';
 
 Widget divider() {
   return const Padding(
@@ -258,28 +257,28 @@ class TitlesList extends StatefulWidget {
 class _TitlesListState extends State<TitlesList> {
   late List<String> titles;
 
-  @override
-  void initState() {
-    super.initState();
-    _fetchTitles();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _fetchTitles();
+  // }
 
-  _fetchTitles() async {
-    if (widget.searchTerm.isEmpty) {
-      titles = await SQLHelper.getTitles();
-    } else {
-      titles = await SQLHelper.searchTitles(widget.searchTerm);
-    }
-    setState(() {}); // Rebuild the widget with the fetched titles.
-  }
+  // _fetchTitles() async {
+  //   if (widget.searchTerm.isEmpty) {
+  //     titles = await SQLHelper.getTitles();
+  //   } else {
+  //     titles = await SQLHelper.searchTitles(widget.searchTerm);
+  //   }
+  //   setState(() {}); // Rebuild the widget with the fetched titles.
+  // }
 
-  @override
-  void didUpdateWidget(TitlesList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.searchTerm != widget.searchTerm) {
-      _fetchTitles();
-    }
-  }
+  // @override
+  // void didUpdateWidget(TitlesList oldWidget) {
+  //   super.didUpdateWidget(oldWidget);
+  //   if (oldWidget.searchTerm != widget.searchTerm) {
+  //     _fetchTitles();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
