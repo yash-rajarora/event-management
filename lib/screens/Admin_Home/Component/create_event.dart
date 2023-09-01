@@ -26,6 +26,7 @@ class _CreateEventState extends State<CreateEvent> {
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
+  final TextEditingController _modeController = TextEditingController();
 
   Future<void> pickImage() async {
     bool _hasUploaded = false;
@@ -89,6 +90,26 @@ class _CreateEventState extends State<CreateEvent> {
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Icon(Icons.location_on),
+                    ),
+                    fillColor: kPrimaryLightColor, // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20,),
+              Container(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: TextFormField(
+                  controller: _modeController,
+                  decoration: InputDecoration(
+                    hintText: 'Offline/Online',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Icon(FluentSystemIcons.ic_fluent_globe_filled),
                     ),
                     fillColor: kPrimaryLightColor, // Change to your desired color
                     filled: true,
@@ -255,6 +276,7 @@ class _CreateEventState extends State<CreateEvent> {
                             'Location': _locationController.text,
                             'Date & Time': _timeController.text,
                             'Description': _descriptionController.text,
+                            'mode': _modeController.text,
                             'Image URL': imageUrl, // Save the image URL
                           }).then((_) {
                             Navigator.pushNamed(context, 'admin_home');
