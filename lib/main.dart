@@ -9,8 +9,6 @@ import 'package:event/utils/bottom_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:event/screens/Admin_Home/admin_home.dart';
-import 'package:sqflite/sqflite.dart';
-
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.7);

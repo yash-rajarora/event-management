@@ -9,6 +9,7 @@ class SQLHelper {
         location TEXT,
         time TEXT,
         description TEXT,
+        image TEXT
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
       """);
