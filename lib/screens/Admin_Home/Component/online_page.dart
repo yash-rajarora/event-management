@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:event/screens/Database/database_helper.dart';
 import'package:fluentui_icons/fluentui_icons.dart';
 
 
@@ -14,6 +12,7 @@ class OnlinePage extends StatefulWidget {
 }
 
 class _OnlinePageState extends State<OnlinePage> {
+  
 
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -53,8 +52,7 @@ class _OnlinePageState extends State<OnlinePage> {
                       child: FloatingActionButton.extended(onPressed: () {
                         showModalBottomSheet(context: context,
                           builder: (BuildContext context) {
-                            return Container(
-                                height: 700.0,
+                            return SingleChildScrollView(
                                 child: Container(
                                   child: Column(
                                     children: [
@@ -83,6 +81,68 @@ class _OnlinePageState extends State<OnlinePage> {
                                               // icon: Icon(Icons.delete,color: Colors.red ),
                                               // // onPressed: () => _deleteEvent(_journals[index]['id']),
                                               // ),
+                                              IconButton(
+                                                icon: Icon(
+                                                  Icons.delete,
+                                                  color: Colors.red,
+                                                ),
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                          'Delete Event',
+                                                          style: TextStyle(
+                                                            fontWeight: FontWeight.bold,
+                                                            fontSize: 20,
+                                                            color: Colors.red,
+                                                          ),
+                                                        ),
+                                                        content: Text(
+                                                          'Are you sure you want to delete this event?',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            child: Text(
+                                                              'Cancel',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color: Colors.grey,
+                                                              ),
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.of(context).pop();
+                                                            },
+                                                          ),
+                                                          TextButton(
+                                                            child: Text(
+                                                              'Delete',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color: Colors.red,
+                                                              ),
+                                                            ),
+                                                            onPressed: () {
+                                                              // delete funtion
+                                                              Navigator.of(context).pop();
+                                                            },
+                                                          ),
+                                                        ],
+                                                        backgroundColor: Colors.white, // Change the background color
+                                                        elevation: 5.0, // Add elevation
+                                                        shape: RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius.circular(10.0), // Customize border radius
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
+
                                               SizedBox(height: 15,),
                                               Row(
                                                 children: [
@@ -152,6 +212,7 @@ class _OnlinePageState extends State<OnlinePage> {
                                                   style: TextStyle(
                                                       color: Colors.white),),
                                                 backgroundColor: Colors.black,),
+                                              SizedBox(height: 25,),
                                             ]
                                         ),
                                       )

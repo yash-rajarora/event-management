@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:event/screens/Database/database_helper.dart';
 import'package:fluentui_icons/fluentui_icons.dart';
 
 
@@ -53,8 +51,7 @@ class _OfflinePageState extends State<OfflinePage> {
                         child: FloatingActionButton.extended(onPressed: () {
                           showModalBottomSheet(context: context,
                             builder: (BuildContext context) {
-                              return Container(
-                                  height: 700.0,
+                              return SingleChildScrollView(
                                   child: Container(
                                     child: Column(
                                       children: [
@@ -152,6 +149,7 @@ class _OfflinePageState extends State<OfflinePage> {
                                                     style: TextStyle(
                                                         color: Colors.white),),
                                                   backgroundColor: Colors.black,),
+                                                SizedBox(height: 25,),
                                               ]
                                           ),
                                         )
