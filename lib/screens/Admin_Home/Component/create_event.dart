@@ -203,16 +203,20 @@ class _CreateEventState extends State<CreateEvent> {
                                           SizedBox(height: 20),
                                           Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50),
                                           SizedBox(height: 20),
-                                          FloatingActionButton.extended(
-                                            onPressed: () async {
-                                              // Pick an image from the gallery
-                                              await pickImage();
-                                            },
-                                            label: Text(
-                                              'Upload Image',
-                                              style: TextStyle(color: Colors.white, fontSize: 20),
+                                          SizedBox(
+                                            width: 200,
+                                            height: 55,
+                                            child: FloatingActionButton.extended(
+                                              onPressed: () async {
+                                                // Pick an image from the gallery
+                                                await pickImage();
+                                              },
+                                              label: Text(
+                                                'Upload Image',
+                                                style: TextStyle(color: Colors.white, fontSize: 15),
+                                              ),
+                                              backgroundColor: kPrimaryColor,
                                             ),
-                                            backgroundColor: kPrimaryColor,
                                           ),
                                         ],
                                       ),
