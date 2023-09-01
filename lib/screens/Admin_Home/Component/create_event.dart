@@ -7,6 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'dart:async';
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({super.key});
@@ -17,11 +19,30 @@ class CreateEvent extends StatefulWidget {
 
 class _CreateEventState extends State<CreateEvent> {
   @override
+  File? _pickedImage; // This variable will hold the picked image file.
+  String? _imageUrl;   // This variable will hold the URL of the uploaded image.
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
+
+  Future<void> pickImage() async {
+    bool _hasUploaded = false;
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      setState(() {
+        _pickedImage = File(pickedImage.path);
+        _hasUploaded = true;
+      });
+    }
+  }
+
+
+
+
 
   Widget build(BuildContext context) {
     // Get the current user from Firebase Authentication
@@ -119,7 +140,39 @@ class _CreateEventState extends State<CreateEvent> {
                 ),
               ),
               SizedBox(height: 20,),
-              Container(
+              if (_pickedImage != null) // Display uploaded image if it exists
+                Container(
+                  height: 310,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: FittedBox(
+                          fit: BoxFit.cover, // You can change this to your preferred fit
+                          child: Image.file(_pickedImage!),
+                        ),
+                      ),
+                      SizedBox(height: 20,),// Show remove image button if an image is uploaded
+                      SizedBox(
+                        width: 200,
+                        height: 55,
+                        child: FloatingActionButton.extended(
+                          onPressed: () {
+                            setState(() {
+                              _pickedImage = null; // Remove the uploaded image
+                            });
+                          },
+                          backgroundColor: Colors.red,
+                          label: Text('Remove Image'),
+
+                        ),
+
+                      ),
+                    ],
+                  ),
+                ),
+
+              if (_pickedImage == null)
+                Container(
                 height: 250,
                 margin: const EdgeInsets.only(right: 30, top: 5, left: 30),
                 child: DottedBorder(
@@ -138,32 +191,37 @@ class _CreateEventState extends State<CreateEvent> {
                       color: kPrimaryLightColor,
                       child: Column(
                         children: [
+
+                                    // Show only when no image is uploaded
+                                      Column(
+                                        children: [
+                                          SizedBox(height: 20),
+                                          Text(
+                                            "Upload Image of Event",
+                                            style: TextStyle(fontSize: 20, color: kPrimaryColor),
+                                          ),
+                                          SizedBox(height: 20),
+                                          Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50),
+                                          SizedBox(height: 20),
+                                          FloatingActionButton.extended(
+                                            onPressed: () async {
+                                              // Pick an image from the gallery
+                                              await pickImage();
+                                            },
+                                            label: Text(
+                                              'Upload Image',
+                                              style: TextStyle(color: Colors.white, fontSize: 20),
+                                            ),
+                                            backgroundColor: kPrimaryColor,
+                                          ),
+                                        ],
+                                      ),
+
+
                           SizedBox(height: 20),
-                          // if (_hasUploaded && _uploadedImage != null)  // Display uploaded image
-                          //   Expanded(
-                          //     child: FittedBox(
-                          //       fit: BoxFit.contain,  // Fit the image within the available space
-                          //       child: Image(image: _uploadedImage!),
-                          //     ),
-                          //   ),
                           // if (!_hasUploaded || _uploadedImage == null)  // Show only when no image is uploaded
-                            Column(
-                              children: [
-                                Text(
-                                  "Upload Image of Event",
-                                  style: TextStyle(fontSize: 20, color: kPrimaryColor),
-                                ),
-                                SizedBox(height: 20),
-                                Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50),
-                              ],
-                            ),
-                          SizedBox(height: 20),
-                          // if (!_hasUploaded || _uploadedImage == null)  // Show only when no image is uploaded
-                            FloatingActionButton.extended(
-                              onPressed: (){},
-                              label: Text('Upload Image', style: TextStyle(color: Colors.white)),
-                              backgroundColor: kPrimaryColor,
-                            ),
+
+
                         ],
                       ),
                     ),
@@ -171,33 +229,44 @@ class _CreateEventState extends State<CreateEvent> {
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
-              Container(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child:FloatingActionButton.extended(
-                  onPressed: () {
-                    String currentTime = DateTime.now().toLocal().toString();
-                    if (user != null) { // Check if user is signed in
-                      FirebaseFirestore.instance.collection('events').doc(currentTime).set({
-                        'Event Name': _titleController.text,
-                        'Location': _locationController.text,
-                        'Date & Time': _timeController.text,
-                        'Description': _descriptionController.text,
-                      }).then((_) {
-                        Navigator.pushNamed(context, 'admin_home');
-                      });
-                    } else {
-                      // Handle the case where the user is not signed in
-                    }
+              SizedBox(height: 20,),
 
-                    },
-                  label: Text(
-                    'Create',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  backgroundColor: kPrimaryColor,
-                ),
-              ),
+                 SizedBox(
+                   width: 200,
+                   height: 55,
+                   child: FloatingActionButton.extended(
+                      onPressed: () async {
+                        String currentTime = DateTime.now().toLocal().toString();
+                        if (user != null && _pickedImage != null) {
+                          // Upload the image to Firebase Storage
+                          final storageReference = FirebaseStorage.instance.ref().child('event_images/$currentTime.jpg');
+                          await storageReference.putFile(_pickedImage!);
+
+                          // Get the download URL for the uploaded image
+                          final imageUrl = await storageReference.getDownloadURL();
+
+                          // Save the event data with the image URL to Firestore
+                          await FirebaseFirestore.instance.collection('events').doc(currentTime).set({
+                            'Event Name': _titleController.text,
+                            'Location': _locationController.text,
+                            'Date & Time': _timeController.text,
+                            'Description': _descriptionController.text,
+                            'Image URL': imageUrl, // Save the image URL
+                          }).then((_) {
+                            Navigator.pushNamed(context, 'admin_home');
+                          });
+                        } else {
+                          // Handle the case where the user is not signed in or no image is picked
+                        }
+                      },
+                      label: Text(
+                        'Create',
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                      backgroundColor: kPrimaryColor,
+                    ),
+                 ),
+
               SizedBox(height: 20,),
             ]
         ),
