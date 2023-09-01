@@ -23,6 +23,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _current = 0;
+
+  double offset = 0.0;
   final List<Widget> imgList = [
     EventScreen(),
     EventScreen(),
@@ -31,10 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
     EventScreen(),
   ];
 
+
+  final PageController _controller = PageController();
+
   final CarouselController _carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -140,18 +146,34 @@ class _HomeScreenState extends State<HomeScreen> {
             //     return OnlineEventScreen();
             //   },
             // ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                  OnlineEventScreen(),
-                ],
-              ),
+            NotificationListener<ScrollNotification>(
+              onNotification: (scrollNotification){
+              setState(() {
+                offset = scrollNotification.metrics.pixels;
+              });
+              return true;
+              },
+                child: SingleChildScrollView(
+                  controller: _controller,
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                      children: List.generate(5, (index) => OnlineEventScreen())
+                  ),
+                ),
             ),
+            Padding(padding: const EdgeInsets.all(8.0),
+            child: DottedIndicator(offset: offset, screenWidth: screenWidth, itemCount: 5,
+              onTap: (index) {
+                _controller.animateTo(
+                  index * screenWidth,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
+            ),
+
+
             SizedBox(height: 25,),
             Container(
               padding: EdgeInsets.only(left: 15),
@@ -164,19 +186,33 @@ class _HomeScreenState extends State<HomeScreen> {
               // itemCount: 5, // Replace with the actual number of offline events
               // itemBuilder: (context, index) {
               //   return
-            SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      OfflineEventScreen(),
-                      OfflineEventScreen(),
-                      OfflineEventScreen(),
-                      OfflineEventScreen(),
-                      OfflineEventScreen(),
-                    ],
-                  ),
+            NotificationListener<ScrollNotification>(
+              onNotification: (scrollNotification){
+                setState(() {
+                  offset = scrollNotification.metrics.pixels;
+                });
+                return true;
+              },
+              child: SingleChildScrollView(
+                controller: _controller,
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                    children: List.generate(5, (index) => OfflineEventScreen())
                 ),
-            SizedBox(height: 25,),
+              ),
+            ),
+            Padding(padding: const EdgeInsets.all(8.0),
+              child: DottedIndicator(offset: offset, screenWidth: screenWidth, itemCount: 5,
+                onTap: (index) {
+                  _controller.animateTo(
+                    index * screenWidth,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 10,),
           ],
         )
 
@@ -184,4 +220,42 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+class DottedIndicator extends StatelessWidget {
+  final double offset;
+  final double screenWidth;
+  final int itemCount;
+  final Function(int) onTap;
+
+  const DottedIndicator({
+    required this.offset,
+    required this.screenWidth,
+    required this.itemCount,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    int current = (offset + screenWidth / 2) ~/ screenWidth;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(itemCount, (index) {
+        return GestureDetector(
+          onTap: () => onTap(index),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+            width: 8.0,
+            height: 8.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: index == current ? Colors.black : Colors.grey,
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
+
 

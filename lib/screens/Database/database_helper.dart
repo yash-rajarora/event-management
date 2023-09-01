@@ -87,7 +87,7 @@ class SQLHelper {
     await db.update('users', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
-  
+
 
   static Future<List<String>> getTitles() async {
     final db = await SQLHelper.db();

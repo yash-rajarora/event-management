@@ -11,10 +11,11 @@ class OfflineEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Container(
         width: screenWidth,
-        height: 360,
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+        height: screenHeight*0.47,
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         // margin: const EdgeInsets.only(right: 1, top: 5),
         decoration: BoxDecoration(
           color: kPrimaryLightColor,
