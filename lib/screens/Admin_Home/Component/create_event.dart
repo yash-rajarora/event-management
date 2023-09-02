@@ -22,6 +22,9 @@ class _CreateEventState extends State<CreateEvent> {
   File? _pickedImage; // This variable will hold the picked image file.
   String? _imageUrl;   // This variable will hold the URL of the uploaded image.
 
+  File? _secondPickedImage;
+  String? _secondImageUrl;
+
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
@@ -40,7 +43,16 @@ class _CreateEventState extends State<CreateEvent> {
       });
     }
   }
+  Future<void> pickSecondImage() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
 
+    if (pickedImage != null) {
+      setState(() {
+        _secondPickedImage = File(pickedImage.path);
+      });
+    }
+  }
 
 
 
@@ -244,8 +256,6 @@ class _CreateEventState extends State<CreateEvent> {
 
 
                           SizedBox(height: 20),
-                          // if (!_hasUploaded || _uploadedImage == null)  // Show only when no image is uploaded
-
 
                         ],
                       ),
@@ -255,6 +265,98 @@ class _CreateEventState extends State<CreateEvent> {
                 ),
               ),
               SizedBox(height: 20,),
+              if (_secondPickedImage != null) // Display uploaded image if it exists
+                Container(
+                  height: 310,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: FittedBox(
+                          fit: BoxFit.cover, // You can change this to your preferred fit
+                          child: Image.file(_secondPickedImage!),
+                        ),
+                      ),
+                      SizedBox(height: 20,),// Show remove image button if an image is uploaded
+                      SizedBox(
+                        width: 200,
+                        height: 55,
+                        child: FloatingActionButton.extended(
+                          onPressed: () {
+                            setState(() {
+                              _secondPickedImage = null; // Remove the uploaded image
+                            });
+                          },
+                          backgroundColor: Colors.red,
+                          label: Text('Remove Image'),
+
+                        ),
+
+                      ),
+                    ],
+                  ),
+                ),
+              if (_secondPickedImage == null)
+                Container(
+                  height: 250,
+                  margin: const EdgeInsets.only(right: 30, top: 5, left: 30),
+                  child: DottedBorder(
+                    radius: Radius.circular(50),
+                    color: kPrimaryColor,//color of dotted/dash line
+                    strokeWidth: 1.5, //thickness of dash/dots
+                    dashPattern: [10,6],
+                    //dash patterns, 10 is dash width, 6 is space width
+                    child: Container(  //inner container
+                      height:250, //height of inner container
+                      width: double.infinity, //width to 100% match to parent container.
+                      color:kPrimaryLightColor ,
+                      child: Container(
+                        height: 250,
+                        width: double.infinity,
+                        color: kPrimaryLightColor,
+                        child: Column(
+                          children: [
+
+                            // Show only when no image is uploaded
+                            Column(
+                              children: [
+                                SizedBox(height: 20),
+                                Text(
+                                  "Upload Poster of Event",
+                                  style: TextStyle(fontSize: 20, color: kPrimaryColor),
+                                ),
+                                SizedBox(height: 20),
+                                Icon(FluentSystemIcons.ic_fluent_upload_regular, color: kPrimaryColor, size: 50),
+                                SizedBox(height: 20),
+                                SizedBox(
+                                  width: 200,
+                                  height: 55,
+                                  child: FloatingActionButton.extended(
+                                    onPressed: () async {
+                                      // Pick an image from the gallery
+                                      await pickSecondImage();
+                                    },
+                                    label: Text(
+                                      'Upload Image',
+                                      style: TextStyle(color: Colors.white, fontSize: 15),
+                                    ),
+                                    backgroundColor: kPrimaryColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+
+
+                            SizedBox(height: 20),
+
+                          ],
+                        ),
+                      ),
+                      //background color of inner container
+                    ),
+                  ),
+                ),
+                 SizedBox(height: 20,),
+
 
                  SizedBox(
                    width: 200,
@@ -270,6 +372,14 @@ class _CreateEventState extends State<CreateEvent> {
                           // Get the download URL for the uploaded image
                           final imageUrl = await storageReference.getDownloadURL();
 
+                          final secondStorageReference = FirebaseStorage.instance
+                              .ref()
+                              .child('event_images/second_$currentTime.jpg');
+                          await secondStorageReference.putFile(_secondPickedImage!);
+
+                          // Get the download URL for the second uploaded image
+                          final secondImageUrl = await secondStorageReference.getDownloadURL();
+
                           // Save the event data with the image URL to Firestore
                           await FirebaseFirestore.instance.collection('events').doc(currentTime).set({
                             'Event Name': _titleController.text,
@@ -277,7 +387,8 @@ class _CreateEventState extends State<CreateEvent> {
                             'Date & Time': _timeController.text,
                             'Description': _descriptionController.text,
                             'mode': _modeController.text.toUpperCase(),
-                            'Image URL': imageUrl, // Save the image URL
+                            'Image URL': imageUrl,
+                            'Second Image URL': secondImageUrl,// Save the image URL
                           }).then((_) {
                             Navigator.pushNamed(context, 'admin_home');
                           });
