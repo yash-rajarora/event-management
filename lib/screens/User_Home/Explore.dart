@@ -16,7 +16,7 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
-  
+
   @override
   void initState(){
     _searchController.addListener(_onSearchChanged);
@@ -135,8 +135,8 @@ class _ExplorePageState extends State<ExplorePage> {
                                                       decoration: BoxDecoration(
                                                         borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) ),
                                                         image: DecorationImage(
-                                                            image: AssetImage("assets/images/discover_main.png"),
-                                                            fit: BoxFit.cover
+                                                          image: NetworkImage(_allResults[index]['Image URL']),
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
