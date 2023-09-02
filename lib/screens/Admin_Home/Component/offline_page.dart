@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import'package:fluentui_icons/fluentui_icons.dart';
 
+import '../admin_home.dart';
+
 
 
 class OfflinePage extends StatefulWidget {
@@ -150,8 +152,10 @@ class _OfflinePageState extends State<OfflinePage> {
                                                               ),
                                                               onPressed: () {
                                                                 deleteDocumentByEventName(data['Event Name']);
-                                                                Navigator.of(context).pop();
-                                                              },
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(builder: (context) => AdminHome()),
+                                                                );},
                                                             ),
                                                           ],
                                                           backgroundColor: Colors.white, // Change the background color
