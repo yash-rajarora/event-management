@@ -65,7 +65,7 @@ class _BottomBarState extends State<BottomBar> {
             activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
           ),
           BottomNavigationBarItem(
-            label: "Explore",
+            label: "My Tickets",
             icon: Icon(CupertinoIcons.ticket),
             activeIcon: Icon(CupertinoIcons.ticket_fill),
           ),
