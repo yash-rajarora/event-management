@@ -1,3 +1,4 @@
+import 'package:event/screens/User_Home/components/getticket_topImage.dart';
 import 'package:event/screens/User_Home/components/online_events.dart';
 import 'package:event/screens/User_Home/home.dart';
 import 'package:event/utils/bottom_bar.dart';
@@ -66,8 +67,9 @@ class _GetTicketsState extends State<GetTickets> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(height: 100),
-            Text("Enter your data", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: kPrimaryColor),),
+                SizedBox(height: 50,),
+                const GetTicketTopImage(),
+                // SizedBox(height: 100),
                 SizedBox(height: 20),
                 TextFormField(
                   decoration: InputDecoration(

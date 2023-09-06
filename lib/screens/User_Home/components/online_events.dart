@@ -15,7 +15,7 @@ class OnlineEventScreen extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
       width: screenWidth,
-      height: screenHeight*0.47,
+      height: screenHeight*0.43,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       // margin: const EdgeInsets.only(right: 1, top: 5),
       decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class OnlineEventScreen extends StatelessWidget {
                         Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.black, fontSize: 15) ,maxLines: 4,),)
                       ],
                     ),
-                    SizedBox(height: 32,),
+                    SizedBox(height: 75,),
 
                   ],
                 ),

@@ -10,11 +10,12 @@ class OfflineEventScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _isExpanded = false;
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
         width: screenWidth,
-        height: screenHeight*0.47,
+        height: screenHeight*0.43,
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         // margin: const EdgeInsets.only(right: 1, top: 5),
         decoration: BoxDecoration(
@@ -67,7 +68,7 @@ class OfflineEventScreen extends StatelessWidget {
                           Expanded(child: Text("JECRC Foundation,A- Block Auditorium", style: TextStyle(color: Colors.black, fontSize: 15) ,maxLines: 4,),)
                         ],
                       ),
-                      SizedBox(height: 32,),
+                      SizedBox(height: 75,),
 
                     ],
                   ),
@@ -95,32 +96,10 @@ class OfflineEventScreen extends StatelessWidget {
                   ),
                 )
               ],
-            )
+            ),
           ],
-        )
-
+        ),
     );
   }
 }
 
-class OfflineEvent extends StatelessWidget {
-  const OfflineEvent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-          padding: const EdgeInsets.all(0),
-          child: ListView(
-            children: [
-              OfflineEventScreen(),
-              OfflineEventScreen(),
-              OfflineEventScreen(),
-              OfflineEventScreen(),
-              OfflineEventScreen(),
-            ],
-          )
-      ),
-    );
-  }
-}

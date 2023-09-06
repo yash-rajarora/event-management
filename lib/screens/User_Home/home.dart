@@ -48,10 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             SizedBox(height: 25),
             Container(
-              padding: EdgeInsets.only(left: 15,top: 25),
+              padding: EdgeInsets.only(left: 15,top: 10),
               child:Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Discover Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
+                child: Text("Discover Events", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900,color: Colors.black),),
               ),
             ),
             divider(),
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 10,),
             Container(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Online Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
+              child: Text("Online Events", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
             divider(),
             // ListView.builder(
@@ -177,9 +177,10 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 25,),
             Container(
               padding: EdgeInsets.only(left: 15),
-              child: Text("Offline Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
+              child: Text("Offline Events", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900,color: Colors.black),),
             ),
             divider(),
+            
             // ListView.builder(
             //   shrinkWrap: true, // Allow the list to take the height it needs
             //   physics: NeverScrollableScrollPhysics(), // Disable scrolling within this ListView

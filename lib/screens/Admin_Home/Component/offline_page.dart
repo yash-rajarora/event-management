@@ -232,12 +232,6 @@ class _OfflinePageState extends State<OfflinePage> {
                                                   ),
                                                 ),
                                                 SizedBox(height: 15,),
-                                                FloatingActionButton.extended(
-                                                  onPressed: () {},
-                                                  label: Text('Get A Ticket',
-                                                    style: TextStyle(
-                                                        color: Colors.white),),
-                                                  backgroundColor: Colors.black,),
                                                 SizedBox(height: 25,),
                                               ]
                                           ),
