@@ -3,11 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class EventScreen extends StatelessWidget {
-  const EventScreen({super.key});
+  final Map<String, dynamic> data;
+
+  const EventScreen({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+
+    // Extract the required data from the passed map
+    String imagePath = data['Image URL']; // Change this to the key used in Firestore
+    String title = data['Event Name']; // Change this based on your Firestore structure
+    // ... (add other data fields as needed)
+
     return Container(
       width: 500,
       height: 260,
@@ -15,35 +23,39 @@ class EventScreen extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
-        image: AssetImage("assets/images/discover.jpg"),
-        fit: BoxFit.cover
+          image: NetworkImage(data['Image URL'],),
+          fit: BoxFit.cover,
         ),
       ),
       child: Container(
-        padding: const EdgeInsets.only(top: 200, right: 170,left: 20,bottom: 20),
-        child: FloatingActionButton.extended(onPressed: (){
-          showModalBottomSheet(context: context,
-            builder: (BuildContext context){
-              return SingleChildScrollView(
-                child: Container(
+        padding: const EdgeInsets.only(top: 200, right: 170, left: 20, bottom: 20),
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return SingleChildScrollView(
+                  child: Container(
                     child: Container(
                       child: Column(
                         children: [
                           Container(
                             height: 250,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) ),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40.0),
+                                  topRight: Radius.circular(40.0)),
                               image: DecorationImage(
-                              image: AssetImage("assets/images/discover_main.png"),
-                              fit: BoxFit.cover
+                                image: NetworkImage(data['Image URL']),
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           SizedBox(height: 30,),
-                          Container(
+                      Container(
                             child: Column(
                                 children: [
-                                  Text("JECRC Cloud Summit 2023",
+                                  Text(title,
                                     style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(height: 15,),
@@ -101,12 +113,27 @@ class EventScreen extends StatelessWidget {
                 ),
               );
             },
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0) )
-            ),
-            isScrollControlled: true,
-          );
-        }, label: Text('Learn More' , style: TextStyle(color: Colors.black,fontSize: 12),), backgroundColor: Colors.white, ),// Foreground widget here,
+                          // Text(
+                          //   title,
+                          //   style: TextStyle(
+                          //       fontSize: 24,
+                          //       color: Colors.black,
+                          //       fontWeight: FontWeight.bold),
+                          // ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40.0),
+                    topRight: Radius.circular(40.0)),
+              ),
+              isScrollControlled: true,
+            );
+          },
+          label: Text(
+            'Learn More',
+            style: TextStyle(color: Colors.black, fontSize: 12),
+          ),
+          backgroundColor: Colors.white,
+        ),
       ),
     );
   }
