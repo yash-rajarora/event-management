@@ -32,7 +32,7 @@ class OnlineEventScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(data['Image URL']), // assuming the Firestore field is named 'imageUrl'
+                    image: NetworkImage(data['Second Image URL']), // assuming the Firestore field is named 'imageUrl'
                   ),
                 ),
               ),
@@ -89,7 +89,7 @@ class OnlineEventScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: 75),
+                    SizedBox(height: 110),
                   ],
                 ),
               ),

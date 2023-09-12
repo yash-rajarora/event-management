@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event/components/already_have_an_account_acheck.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'components/Registered card.dart';
 
@@ -20,6 +22,24 @@ class MyTicket extends StatefulWidget {
 }
 
 class _MyTicketState extends State<MyTicket> {
+  String userEventname = "";
+  String userEmailid = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserRole(); // Call the function to fetch the user role when the widget is created
+  }
+
+  Future<void> fetchUserRole() async {
+    final user = FirebaseAuth.instance.currentUser;
+    final userDoc = await FirebaseFirestore.instance.collection('data').doc(user?.uid).get();
+    setState(() {
+      userEventname = userDoc.data()?['Event Name'] ?? "";
+      userEmailid = userDoc.data()?['Email'] ?? "";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,23 +57,10 @@ class _MyTicketState extends State<MyTicket> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 OrderContainer(
-                  productName: 'JECRC CLOUD SUMMIT',
-                  orderDate: '2023-08-17',
+                  productName: userEventname,
+                  email: userEmailid,
                   orderStatus: 'Confirmed',
-                  totalPrice: 0,
-                ),
-                OrderContainer(
-                  productName: 'JECRC MUN',
-                  orderDate: '2023-08-15',
-                  orderStatus: 'Pending',
-                  totalPrice: 100.0,
-                ),
-                OrderContainer(
-                  productName: 'JECRC REN',
-                  orderDate: '2023-08-15',
-                  orderStatus: 'Failed',
-                  totalPrice: 30.0,
-                ),
+                )
               ],
             ),
           ),

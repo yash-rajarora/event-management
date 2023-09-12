@@ -23,7 +23,7 @@ class OfflineEventScreen extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: screenWidth * 0.45,
+                width: screenWidth * 0.47,
                 height: 240,
                 margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
@@ -87,7 +87,7 @@ class OfflineEventScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: 75),
+                    SizedBox(height: 110),
                   ],
                 ),
               ),

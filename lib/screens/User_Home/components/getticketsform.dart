@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event/screens/User_Home/components/getticket_topImage.dart';
 import 'package:event/screens/User_Home/components/online_events.dart';
 import 'package:event/screens/User_Home/home.dart';
 import 'package:event/utils/bottom_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -14,47 +16,11 @@ class GetTickets extends StatefulWidget {
 class _GetTicketsState extends State<GetTickets> {
   final _formKey = GlobalKey<FormState>();
 
-  String _name = '';
-  String _email = '';
-  String _phone = '';
-  String _year = '';
-  String _branch = '';
-
-  Future<Database> _openDatabase() async {
-    final databasePath = await getDatabasesPath();
-    final database = openDatabase(
-      join(databasePath, 'user_database.db'),
-      onCreate: (db, version) {
-        return db.execute('''
-          CREATE TABLE users(
-            id INTEGER PRIMARY KEY,
-            name TEXT,
-            email TEXT,
-            phone TEXT,
-            year TEXT,
-            branch TEXT
-          )
-          ''');
-      },
-      version: 1,
-    );
-    return database;
-  }
-
-  void _saveData() async {
-    final database = await _openDatabase();
-    await database.insert(
-      'users',
-      {
-        'name': _name,
-        'email': _email,
-        'phone': _phone,
-        'year': _year,
-        'branch': _branch,
-      },
-    );
-    print('Data saved to database');
-  }
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phonenoController = TextEditingController();
+  final TextEditingController _yearController = TextEditingController();
+  final TextEditingController _eventnameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +38,25 @@ class _GetTicketsState extends State<GetTickets> {
                 // SizedBox(height: 100),
                 SizedBox(height: 20),
                 TextFormField(
+                  controller: _eventnameController,
+                  decoration: InputDecoration(
+                    hintText: 'Event Name',
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.event),
+                    ),
+                    fillColor: kPrimaryLightColor,
+                    // Change to your desired color
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                TextFormField(
+                  controller: _nameController,
                   decoration: InputDecoration(
                     hintText: 'Name',
                     prefixIcon: Padding(
@@ -89,6 +74,7 @@ class _GetTicketsState extends State<GetTickets> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     prefixIcon: Padding(
@@ -108,6 +94,7 @@ class _GetTicketsState extends State<GetTickets> {
                   height: 20,
                 ),
                 TextFormField(
+                  controller: _phonenoController,
                   decoration: InputDecoration(
                     hintText: 'Phone number',
                     prefixIcon: Padding(
@@ -125,6 +112,7 @@ class _GetTicketsState extends State<GetTickets> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  controller: _yearController,
                   decoration: InputDecoration(
                     hintText: 'Year',
                     prefixIcon: Padding(
@@ -141,35 +129,19 @@ class _GetTicketsState extends State<GetTickets> {
                   ),
                 ),
                 SizedBox(height: 20),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Branch',
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Icon(Icons.computer),
-                    ),
-                    fillColor: kPrimaryLightColor,
-                    // Change to your desired color
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState?.save();
-                      _saveData(); // Wait for data saving to complete
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                BottomBar()), // Replace with your desired screen
-                      );
-                    }
+                      final user = FirebaseAuth.instance.currentUser;
+                      final userDoc = await FirebaseFirestore.instance.collection('data').doc(user?.uid).get();
+                      await FirebaseFirestore.instance.collection('data').doc(user?.uid).set({
+                        'Name': _nameController.text,
+                        'Email': _emailController.text,
+                        'Phone Number': _phonenoController.text,
+                        'Year': _yearController.text,
+                        'Event Name': _eventnameController.text,
+                      }).then((_) {
+                        Navigator.pushNamed(context, 'home');
+                      });
                   },
                   child: Text('Save'),
                 ),

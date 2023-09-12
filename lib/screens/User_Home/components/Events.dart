@@ -64,7 +64,7 @@ class EventScreen extends StatelessWidget {
                                       SizedBox(width: 20,),
                                       Icon(FluentSystemIcons.ic_fluent_clock_regular, color: Colors.black,size: 20,),
                                       SizedBox(width: 17,),
-                                      Text("1 - 3 January 2023 ( 3 Days )", style: TextStyle(color: Colors.black),)
+                                      Text(data['Date & Time'], style: TextStyle(color: Colors.black),)
                                     ],
                                   ),
                                   SizedBox(height: 15,),
@@ -73,7 +73,7 @@ class EventScreen extends StatelessWidget {
                                       SizedBox(width: 20,),
                                       Icon(FluentSystemIcons.ic_fluent_location_regular, color: Colors.black,size: 20,),
                                       SizedBox(width: 17,),
-                                      Expanded(child: Text("JECRC Foundation, A - Block Auditorium", style: TextStyle(color: Colors.black) ,maxLines: 2,),)
+                                      Expanded(child: Text(data['Location'], style: TextStyle(color: Colors.black) ,maxLines: 2,),)
                                     ],
                                   ),
                                   SizedBox(height: 15,),
@@ -82,7 +82,7 @@ class EventScreen extends StatelessWidget {
                                       SizedBox(width: 20,),
                                       Icon(FluentSystemIcons.ic_fluent_globe_regular, color: Colors.black,size: 20,),
                                       SizedBox(width: 17,),
-                                      Expanded(child: Text("Online", style: TextStyle(color: Colors.black) ,maxLines: 2,),)
+                                      Expanded(child: Text(data['mode'], style: TextStyle(color: Colors.black) ,maxLines: 2,),)
                                     ],
                                   ),
                                   SizedBox(height: 15,),
@@ -97,7 +97,7 @@ class EventScreen extends StatelessWidget {
                                     padding: const EdgeInsets.only(left: 20, right: 20),
                                     child: Row(
                                       children: [
-                                        Expanded(child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the rel", style: TextStyle(color: Colors.black),maxLines: 20,))
+                                        Expanded(child: Text(data['Description'], style: TextStyle(color: Colors.black),maxLines: 20,))
                                       ],
                                     ),
                                   ),

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 class OrderContainer extends StatelessWidget {
   final String productName;
-  final String orderDate;
+  final String email;
   final String orderStatus;
-  final double totalPrice;
+
 
   const OrderContainer({
     required this.productName,
-    required this.orderDate,
+    required this.email,
     required this.orderStatus,
-    required this.totalPrice,
   });
 
   @override
@@ -39,7 +38,7 @@ class OrderContainer extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Order Date: $orderDate',
+            'Email: $email',
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
           SizedBox(height: 5),
@@ -48,10 +47,6 @@ class OrderContainer extends StatelessWidget {
             style: TextStyle(fontSize: 14, color: _getStatusColor(orderStatus)),
           ),
           SizedBox(height: 10),
-          Text(
-            'Total Price: ${totalPrice.toStringAsFixed(2)}',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
         ],
       ),
     );

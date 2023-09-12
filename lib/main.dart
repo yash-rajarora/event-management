@@ -55,7 +55,7 @@ void main() async {
     debugShowCheckedModeBanner: false,
     theme: theme,
 
-    initialRoute: stayLoggedIn ? 'home' : 'welcome', // Navigate based on login status
+    initialRoute: stayLoggedIn ? 'preloader' : 'home', // Navigate based on login status
     routes: {
       'welcome':(context) => WelcomeScreen(),
       'preloader' : (context) => SplashScreen(),
