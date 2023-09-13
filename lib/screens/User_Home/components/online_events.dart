@@ -21,83 +21,86 @@ class OnlineEventScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       decoration: BoxDecoration(color: kPrimaryLightColor),
       child: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: screenWidth * 0.45,
-                height: 240,
-                margin: const EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(data['Second Image URL']), // assuming the Firestore field is named 'imageUrl'
-                  ),
-                ),
-              ),
-              SizedBox(width: 12),
-              Container(
-                padding: const EdgeInsets.only(top: 20),
-                width: screenWidth * 0.4,
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        data['Event Name'], // assuming the Firestore field is named 'eventName'
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                        maxLines: 2,
+          children: [
+            Container(
+              height: screenHeight* 0.32,
+              child: Row(
+                children: [
+                  Container(
+                    width: screenWidth * 0.45,
+                    height: 240,
+                    margin: const EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(data['Second Image URL']), // assuming the Firestore field is named 'imageUrl'
                       ),
                     ),
-                    SizedBox(height: 22),
-                    Row(
+                  ),
+                  SizedBox(width: 12),
+                  Container(
+                    padding: const EdgeInsets.only(top: 20),
+                    width: screenWidth * 0.4,
+                    child: Column(
                       children: [
-                        Icon(
-                          FluentSystemIcons.ic_fluent_clock_regular,
-                          color: Colors.black,
-                          size: 15,
-                        ),
-                        SizedBox(width: 5),
-                        Expanded(
+                        Align(
+                          alignment: Alignment.center,
                           child: Text(
-                            data['Date & Time'], // assuming the Firestore field is named 'eventDate'
-                            style: TextStyle(color: Colors.black, fontSize: 15),
-                            maxLines: 4,
+                            data['Event Name'], // assuming the Firestore field is named 'eventName'
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
+                            maxLines: 2,
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 22),
-                    Row(
-                      children: [
-                        Icon(
-                          FluentSystemIcons.ic_fluent_location_regular,
-                          color: Colors.black,
-                          size: 15,
+                        SizedBox(height: 22),
+                        Row(
+                          children: [
+                            Icon(
+                              FluentSystemIcons.ic_fluent_clock_regular,
+                              color: Colors.black,
+                              size: 15,
+                            ),
+                            SizedBox(width: 5),
+                            Expanded(
+                              child: Text(
+                                data['Date & Time'], // assuming the Firestore field is named 'eventDate'
+                                style: TextStyle(color: Colors.black, fontSize: 15),
+                                maxLines: 4,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 5),
-                        Expanded(
-                          child: Text(
-                            data['Location'], // assuming the Firestore field is named 'eventLocation'
-                            style: TextStyle(color: Colors.black, fontSize: 15),
-                            maxLines: 4,
-                          ),
-                        )
+                        SizedBox(height: 22),
+                        Row(
+                          children: [
+                            Icon(
+                              FluentSystemIcons.ic_fluent_location_regular,
+                              color: Colors.black,
+                              size: 15,
+                            ),
+                            SizedBox(width: 5),
+                            Expanded(
+                              child: Text(
+                                data['Location'], // assuming the Firestore field is named 'eventLocation'
+                                style: TextStyle(color: Colors.black, fontSize: 15),
+                                maxLines: 4,
+                              ),
+                            )
+                          ],
+                        ),
+                        // SizedBox(height: 110),
                       ],
                     ),
-                    SizedBox(height: 110),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          Column(
-            children: [
-              SizedBox(
+            ),
+            SizedBox(height: 10,),
+            Container(
+              child: SizedBox(
                 width: 500,
                 height: 50,
                 child: ElevatedButton(
@@ -120,11 +123,10 @@ class OnlineEventScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-              )
-            ],
-          )
-        ],
-      ),
+              ),
+            ),
+          ],
+        ),
     );
   }
 }

@@ -119,10 +119,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: 10,),
                     Container(
                       padding: EdgeInsets.only(left: 15),
-                      child: Text("Online Events", style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.black),),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                          child:Text("Online Events", style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.black),),
+
+                )
+
                     ),
                     divider(),
 
@@ -187,11 +192,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     SizedBox(height: 25,),
                     Container(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text("Offline Events", style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.black),),
+                        padding: EdgeInsets.only(left: 15),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child:Text("Offline Events", style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.black),),
+
+                        )
+
                     ),
                     divider(),
 

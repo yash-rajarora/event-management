@@ -8,6 +8,8 @@ List _resultList = [];
 
 final TextEditingController _searchController= TextEditingController();
 
+
+
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
 
@@ -15,9 +17,10 @@ class ExplorePage extends StatefulWidget {
   State<ExplorePage> createState() => _ExplorePageState();
 }
 
-class _ExplorePageState extends State<ExplorePage> {
+class _ExplorePageState extends State<ExplorePage> with AutomaticKeepAliveClientMixin<ExplorePage> {
 
   @override
+  bool get wantKeepAlive => true;
   void initState(){
     _searchController.addListener(_onSearchChanged);
     super.initState();
