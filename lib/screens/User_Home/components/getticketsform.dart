@@ -143,7 +143,7 @@ class _GetTicketsState extends State<GetTickets> {
                         Navigator.pushNamed(context, 'home');
                       });
                   },
-                  child: Text('Save'),
+                  child: Text('Submit'),
                 ),
               ],
             ),

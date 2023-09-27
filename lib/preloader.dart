@@ -1,3 +1,4 @@
+import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:event/screens/Login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,27 +40,26 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [
-              Color.fromRGBO(159, 208, 181, 1),
-              Color.fromRGBO(66, 138, 157, 1),
-              Color.fromRGBO(159, 208, 181, 1),
-            ],
-          ),
+          color: kPrimaryLightColor, // Set the background color to white
+          borderRadius: BorderRadius.circular(10), // Add border radius if needed
         ),
-        // Show a loading indicator if isLoading is true
         child: isLoading
             ? Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/event_logo.jpg', // Replace with your logo asset path
-                width: 200, // Adjust the width as needed
-                height: 200, // Adjust the height as needed
+                'assets/images/logo2.png', // Replace with your logo asset path
+                width: 400, // Adjust the width as needed
+                height: 400, // Adjust the height as needed
               ),
+              SizedBox(height: 20), // Add some space between the image and the loading indicator
               CircularProgressIndicator(), // You can customize this loading indicator
+              SizedBox(height: 20), // Add some space between the loading indicator and other content
+              Text(
+                'Loading...', // You can customize this text or remove it
+                style: TextStyle(fontSize: 18), // Customize the text style
+              ),
             ],
           ),
         )

@@ -2,10 +2,12 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+
 class EventScreen extends StatelessWidget {
   final Map<String, dynamic> data;
 
   const EventScreen({Key? key, required this.data}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
