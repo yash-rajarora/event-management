@@ -1,3 +1,4 @@
+import 'package:event/screens/Admin_Home/Component/Vendors.dart';
 import 'package:event/screens/Admin_Home/Component/create_event.dart';
 import 'package:event/screens/Admin_Home/Component/offline_page.dart';
 import 'package:event/screens/Admin_Home/Component/online_page.dart';
@@ -24,7 +25,8 @@ class _AdminHomeState extends State<AdminHome> {
     CreateEvent(),
     OnlinePage(),
     OfflinePage(),
-    Profile()
+    Vendors(),
+    Profile(),
   ];
 
   void _onItemTapped(int index){
@@ -69,6 +71,11 @@ class _AdminHomeState extends State<AdminHome> {
                 icon: Icon(FluentSystemIcons.ic_fluent_cloud_offline_regular),
                 // icon: Icon(CupertinoIcons.ticket),
                 activeIcon: Icon(FluentSystemIcons.ic_fluent_cloud_offline_filled),
+              ),
+              BottomNavigationBarItem(
+                label: "Vendors",
+                icon:Icon(CupertinoIcons.person_3),
+                activeIcon: Icon(CupertinoIcons.person_3_fill),
               ),
               BottomNavigationBarItem(
                 label: "Profile",
