@@ -131,9 +131,14 @@ class _GetTicketsState extends State<GetTickets> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-                      final user = FirebaseAuth.instance.currentUser;
-                      final userDoc = await FirebaseFirestore.instance.collection('data').doc(user?.uid).get();
-                      await FirebaseFirestore.instance.collection('data').doc(user?.uid).set({
+                    final user = FirebaseAuth.instance.currentUser;
+
+                    if (user != null) {
+                      final uid = user.uid;
+                      final currentTime = DateTime.now();
+                      final formattedTime = currentTime.toUtc();
+
+                      await FirebaseFirestore.instance.collection(uid).doc(formattedTime.toString()).set({
                         'Name': _nameController.text,
                         'Email': _emailController.text,
                         'Phone Number': _phonenoController.text,
@@ -141,10 +146,17 @@ class _GetTicketsState extends State<GetTickets> {
                         'Event Name': _eventnameController.text,
                       }).then((_) {
                         Navigator.pushNamed(context, 'home');
+                      }).catchError((error) {
+                        // Handle any errors that occur during the Firestore operation.
+                        print("Error: $error");
                       });
+                    } else {
+                      // Handle the case where the user is not authenticated.
+                    }
                   },
                   child: Text('Submit'),
                 ),
+
               ],
             ),
           ),
