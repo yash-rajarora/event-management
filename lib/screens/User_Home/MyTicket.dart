@@ -22,21 +22,25 @@ class MyTicket extends StatefulWidget {
 }
 
 class _MyTicketState extends State<MyTicket> {
-  String userEventname = "";
-  String userEmailid = "";
+  List<UserData> userDataList = [];
 
   @override
   void initState() {
     super.initState();
-    fetchUserRole(); // Call the function to fetch the user role when the widget is created
+    fetchUserList(); // Call the function to fetch user data when the widget is created
   }
 
-  Future<void> fetchUserRole() async {
+  Future<void> fetchUserList() async {
     final user = FirebaseAuth.instance.currentUser;
-    final userDoc = await FirebaseFirestore.instance.collection('data').doc(user?.uid).get();
+    final uid = user?.uid;
+    final userDocs = await FirebaseFirestore.instance.collection(uid!).get();
     setState(() {
-      userEventname = userDoc.data()?['Event Name'] ?? "";
-      userEmailid = userDoc.data()?['Email'] ?? "";
+      userDataList = userDocs.docs.map((doc) {
+        return UserData(
+          eventName: doc.data()?['Event Name'] ?? "",
+          email: doc.data()?['Email'] ?? "",
+        );
+      }).toList();
     });
   }
 
@@ -48,20 +52,20 @@ class _MyTicketState extends State<MyTicket> {
           SizedBox(height: 25),
           Container(
             padding: EdgeInsets.only(left: 25),
-            child: Text("Registered Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900,color: Colors.black),),
+            child: Text("Registered Events", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.black)),
           ),
           divider(),
           Padding(
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                OrderContainer(
-                  productName: userEventname,
-                  email: userEmailid,
+              children: userDataList.map((userData) {
+                return OrderContainer(
+                  productName: userData.eventName,
+                  email: userData.email,
                   orderStatus: 'Confirmed',
-                )
-              ],
+                );
+              }).toList(),
             ),
           ),
         ],
@@ -69,3 +73,14 @@ class _MyTicketState extends State<MyTicket> {
     );
   }
 }
+
+class UserData {
+  final String eventName;
+  final String email;
+
+  UserData({
+    required this.eventName,
+    required this.email,
+  });
+}
+
