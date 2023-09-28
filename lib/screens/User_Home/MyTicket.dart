@@ -3,6 +3,7 @@ import 'package:event/components/already_have_an_account_acheck.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'components/Registered card.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 
 Widget divider() {
@@ -16,6 +17,7 @@ Widget divider() {
 
 class MyTicket extends StatefulWidget {
   const MyTicket({super.key});
+
 
   @override
   State<MyTicket> createState() => _MyTicketState();
@@ -59,13 +61,49 @@ class _MyTicketState extends State<MyTicket> {
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: userDataList.map((userData) {
-                return OrderContainer(
-                  productName: userData.eventName,
-                  email: userData.email,
-                  orderStatus: 'Confirmed',
-                );
-              }).toList(),
+              children: [
+                ...userDataList.map((userData) {
+                  return OrderContainer(
+                    productName: userData.eventName,
+                    email: userData.email,
+                    orderStatus: 'Confirmed',
+                  );
+                }).toList(),
+                SizedBox(height: 16), // Add some spacing between the OrderContainers and the button
+                ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('QR Code Ticket'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              QrImageView(
+                                data: '1234567890',
+                                version: QrVersions.auto,
+                                size: 200.0,
+                              ),
+                              SizedBox(height: 16.0),
+                              Text('Scan this QR code to access your ticket.'),
+                            ],
+                          ),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(); // Close the dialog
+                              },
+                              child: Text('Close'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Text("Your Button Text"),
+                ),
+              ],
             ),
           ),
         ],
