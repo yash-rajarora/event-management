@@ -58,13 +58,6 @@ class _ExplorePageState extends State<ExplorePage> with AutomaticKeepAliveClient
   }
 
   @override
-  void dispose(){
-    _searchController.removeListener(_onSearchChanged);
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  @override
   void didChangeDependencies() {
     getClientStream();
     super.didChangeDependencies();
