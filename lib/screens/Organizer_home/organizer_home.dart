@@ -1,29 +1,28 @@
-import 'package:event/screens/Admin_Home/Component/create_event.dart';
-import 'package:event/screens/Admin_Home/Component/offline_page.dart';
-import 'package:event/screens/Admin_Home/Component/online_page.dart';
+import 'package:event/screens/Organizer_home/Component/create_event.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../user_Home/profile.dart';
-import '../user_Home/MyTicket.dart';
+import 'Component/offline_page.dart';
+import 'Component/online_page.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
 
-class AdminHome extends StatefulWidget {
-  const AdminHome({super.key});
+class OrganizerHome extends StatefulWidget {
+  const OrganizerHome({super.key});
 
   @override
-  State<AdminHome> createState() => _AdminHomeState();
+  State<OrganizerHome> createState() => _OrganizerHomeState();
 }
 
-class _AdminHomeState extends State<AdminHome> {
+class _OrganizerHomeState extends State<OrganizerHome> {
 
   int _selectedIndex=0;
   static final List<Widget>_widgetOptions = <Widget>[
-    CreateEvent(),
-    OnlinePage(),
-    OfflinePage(),
+    CreateEventorg(),
+    OnlinePageorg(),
+    OfflinePageorg(),
     Profile(),
   ];
 

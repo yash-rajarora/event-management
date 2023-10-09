@@ -89,6 +89,8 @@ class LoginForm extends StatelessWidget {
 // Check user's role
                 if (userRole == 'admin') {
                   Navigator.pushReplacementNamed(context, 'admin_home'); // Replace with your admin page route
+                } else if (userRole == 'organizer') {
+                  Navigator.pushReplacementNamed(context, 'organizer_home'); // Replace with your organizer page route
                 } else {
                   Navigator.pushReplacementNamed(context, 'home'); // Replace with your user page route
                 }

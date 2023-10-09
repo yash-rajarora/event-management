@@ -1,5 +1,6 @@
 import 'package:event/preloader.dart';
 import 'package:event/screens/Login/login_screen.dart';
+import 'package:event/screens/Organizer_home/organizer_home.dart';
 import 'package:event/screens/Signup/signup_screen.dart';
 import 'package:event/screens/Welcome/welcome_screen.dart';
 import 'package:event/screens/forgot/forgot_screen.dart';
@@ -64,7 +65,8 @@ void main() async {
       'forgot':(context) => forgot_password(),
       'home':(context) => BottomBar(),
       'admin_home':(context) => AdminHome(),
-      'home':(context) => BottomBar()
+      'home':(context) => BottomBar(),
+      'organizer_home':(context) => OrganizerHome()
     },
 
   ));
