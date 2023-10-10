@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../user_Home/profile.dart';
 import 'Component/offline_page.dart';
 import 'Component/online_page.dart';
+import 'package:event/screens/Organizer_home/Component/scan.dart';
 
 const kPrimaryColor = Color.fromRGBO(58, 107, 53, 1);
 const kPrimaryLightColor = Color.fromRGBO(203, 209, 143,0.8);
@@ -23,6 +24,7 @@ class _OrganizerHomeState extends State<OrganizerHome> {
     CreateEventorg(),
     OnlinePageorg(),
     OfflinePageorg(),
+    ScanQr(),
     Profile(),
   ];
 
@@ -68,6 +70,11 @@ class _OrganizerHomeState extends State<OrganizerHome> {
                 icon: Icon(FluentSystemIcons.ic_fluent_cloud_offline_regular),
                 // icon: Icon(CupertinoIcons.ticket),
                 activeIcon: Icon(FluentSystemIcons.ic_fluent_cloud_offline_filled),
+              ),
+              BottomNavigationBarItem(
+                label: "Scan",
+                icon:Icon(FluentSystemIcons.ic_fluent_qr_code_regular),
+                activeIcon: Icon(FluentSystemIcons.ic_fluent_qr_code_filled),
               ),
               BottomNavigationBarItem(
                 label: "Profile",

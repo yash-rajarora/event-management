@@ -81,7 +81,7 @@ class _MyTicketState extends State<MyTicket> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               QrImageView(
-                                data: '1234567890',
+                                data: '123456789',
                                 version: QrVersions.auto,
                                 size: 200.0,
                               ),
@@ -101,7 +101,7 @@ class _MyTicketState extends State<MyTicket> {
                       },
                     );
                   },
-                  child: Text("Your Button Text"),
+                  child: Text("Show Ticket"),
                 ),
               ],
             ),

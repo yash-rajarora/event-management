@@ -188,8 +188,7 @@ class _ExplorePageState extends State<ExplorePage> with AutomaticKeepAliveClient
                                                             ),
                                                             SizedBox(height: 15,),
                                                             FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),
-                                                            SizedBox(height: 15,),
-                                                            FloatingActionButton.extended(onPressed: (){}, label: Text('Share' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),                                                          ]
+                                                            ]
                                                       ),
                                                     )
                                                   ],
