@@ -15,19 +15,7 @@ class OrderContainer extends StatefulWidget {
 }
 
 class _OrderContainerState extends State<OrderContainer> {
-  Future<void> fetchUserList() async {
-    final user = FirebaseAuth.instance.currentUser;
-    final uid = user?.uid;
-    final userDocs = await FirebaseFirestore.instance.collection(uid!).get();
-    setState(() {
-      var userDataList = userDocs.docs.map((doc) {
-        return UserData(
-          eventName: doc.data()?['Event Name'] ?? "",
-          email: doc.data()?['Email'] ?? "",
-        );
-      }).toList();
-    });
-  }
+
   @override
 
   Widget build(BuildContext context) {
