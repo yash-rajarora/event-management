@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import '../../components/already_have_an_account_acheck.dart';
+import 'components/getticketsform.dart';
 
 List _allResults = [];
 List _resultList = [];
@@ -187,7 +188,10 @@ class _ExplorePageState extends State<ExplorePage> with AutomaticKeepAliveClient
                                                               ),
                                                             ),
                                                             SizedBox(height: 15,),
-                                                            FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),]
+                                                            FloatingActionButton.extended(onPressed: (){Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(builder: (context) => GetTickets()),
+                                                            );}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),]
                                                       ),
                                                     )
                                                   ],
