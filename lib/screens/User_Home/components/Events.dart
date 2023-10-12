@@ -2,6 +2,8 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'getticketsform.dart';
+
 
 class EventScreen extends StatelessWidget {
   final Map<String, dynamic> data;
@@ -104,7 +106,10 @@ class EventScreen extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(height: 15,),
-                                  FloatingActionButton.extended(onPressed: (){}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),
+                                  FloatingActionButton.extended(onPressed: (){Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => GetTickets()),
+                                  );}, label: Text('Get A Ticket' , style: TextStyle(color: Colors.white),), backgroundColor: Colors.black, ),
                                   SizedBox(height: 25,),
                                 ]
                             ),
