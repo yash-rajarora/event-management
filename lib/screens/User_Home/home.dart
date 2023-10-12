@@ -173,21 +173,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DottedIndicator(
-                        offset: offset,
-                        screenWidth: screenWidth,
-                        itemCount: 5, // Update this to be dynamic based on Firestore data if needed
-                        onTap: (index) {
-                          _controller.animateTo(
-                            index * screenWidth,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                        },
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: DottedIndicator(
+                    //     offset: offset,
+                    //     screenWidth: screenWidth,
+                    //     itemCount: 5, // Update this to be dynamic based on Firestore data if needed
+                    //     onTap: (index) {
+                    //       _controller.animateTo(
+                    //         index * screenWidth,
+                    //         duration: Duration(milliseconds: 300),
+                    //         curve: Curves.easeInOut,
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
 
 
                     SizedBox(height: 25,),

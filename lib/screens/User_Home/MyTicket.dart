@@ -70,39 +70,7 @@ class _MyTicketState extends State<MyTicket> {
                   );
                 }).toList(),
                 SizedBox(height: 16), // Add some spacing between the OrderContainers and the button
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('QR Code Ticket'),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              QrImageView(
-                                data: '1234567890',
-                                version: QrVersions.auto,
-                                size: 200.0,
-                              ),
-                              SizedBox(height: 16.0),
-                              Text('Scan this QR code to access your ticket.'),
-                            ],
-                          ),
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).pop(); // Close the dialog
-                              },
-                              child: Text('Close'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: Text("Your Button Text"),
-                ),
+
               ],
             ),
           ),
