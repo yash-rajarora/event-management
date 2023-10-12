@@ -29,22 +29,8 @@ class _MyTicketState extends State<MyTicket> {
   @override
   void initState() {
     super.initState();
-    fetchUserList(); // Call the function to fetch user data when the widget is created
   }
 
-  Future<void> fetchUserList() async {
-    final user = FirebaseAuth.instance.currentUser;
-    final uid = user?.uid;
-    final userDocs = await FirebaseFirestore.instance.collection(uid!).get();
-    setState(() {
-      userDataList = userDocs.docs.map((doc) {
-        return UserData(
-          eventName: doc.data()?['Event Name'] ?? "",
-          email: doc.data()?['Email'] ?? "",
-        );
-      }).toList();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,39 +56,7 @@ class _MyTicketState extends State<MyTicket> {
                   );
                 }).toList(),
                 SizedBox(height: 16), // Add some spacing between the OrderContainers and the button
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('QR Code Ticket'),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              QrImageView(
-                                data: '123456789',
-                                version: QrVersions.auto,
-                                size: 200.0,
-                              ),
-                              SizedBox(height: 16.0),
-                              Text('Scan this QR code to access your ticket.'),
-                            ],
-                          ),
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).pop(); // Close the dialog
-                              },
-                              child: Text('Close'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: Text("Show Ticket"),
-                ),
+
               ],
             ),
           ),
